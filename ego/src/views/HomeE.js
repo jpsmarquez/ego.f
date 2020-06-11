@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { Button} from 'antd';
 
-export default function HomeAdmin(props) {
+export default function HomeE(props) {
     return (
       <div>
         <button onClick={props.logout}>log out</button>

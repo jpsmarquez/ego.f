@@ -3,14 +3,14 @@ import { Form, Input,Col, Row, } from 'antd';
 import TextArea from "antd/lib/input/TextArea";
 
 
-export default function FormasDeCampo(props) {
+export default function FormasDeCampo({llenarcampos, value}) {
 
-    const [campo,setCampo] = useState('');
     const { TextArea } = Input;
+    
     return (
-       <Col span={6}>
+       <Col span={6} style={{marginVertical:10}}>
 
-        <TextArea rows={4} onChange={(e) => setCampo(e.target.value)} value={campo} 
+        <TextArea style={{height:'fit-content'}} rows={4} onChange={(e) => llenarcampos(e.target.value)} value={value} 
         placeholder={"NOMBRE:CONTENT"} />
 
         </Col>

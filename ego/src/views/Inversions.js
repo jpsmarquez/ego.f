@@ -1,17 +1,44 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
-import { Button,Carousel, Radio} from 'antd';
+import { Button,Carousel, Radio,Col} from 'antd';
+import * as firebase from "firebase/app";
+
 
 export default function Inversions(props) {
+  const [inversions,setInversions] = useState([])
+  const [ready,setReady] = useState(false)
+  useEffect(()=>{
+    if (!ready) {
+    firebase.database().ref("/inversion/").on("child_added",snap=> {
+      console.log(snap.val())
+      setReady(true)
+      let a = [...inversions];
+      a.push(snap.val());
+      setInversions(a)
+      })
+    }
+  }, [inversions, ready])
+
+
+
   return (
-    <div >
+
+    <div style={{display:'flex', 
+    justifyContent: 'space-around'}}>
+
       <Link  to="/Home">
-        <Button type="primary" shape="circle" >
+        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
               HOME
         </Button>
       </Link>
+      <div>
+       
 
-      
+      </div>
+
+
+
+
       </div>   
   );
 };
@@ -57,4 +84,17 @@ class PositionCarouselDemo extends React.Component {
 }
 
 ReactDOM.render(<PositionCarouselDemo />, mountNode);
+
+
+
+      let arrayofinversions = []
+      for (const item in snap.val()) {
+        console.log(snap.val()[item])
+        arrayofinversions.push(snap.val()[item])
+
+      }
+
+      setInversions(arrayofinversions)
+
+      ´
 */

@@ -36,11 +36,11 @@ export default function ResetPassword() {
                   type={'email'}
                 />
               </Form.Item>
-
+              <Link to={'/Home'}>
               <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}}>
                 ENVIAR
               </Button>
-
+              </Link>
 
             </Form>
     </div>

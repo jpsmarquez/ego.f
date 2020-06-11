@@ -4,9 +4,10 @@ import { Button} from 'antd';
 
 export default function HomeAdmin(props) {
     return (
-      <div>
+      <div style={{display:'flex', 
+      justifyContent: 'space-around'}}>
         <Link  to="/Home">
-        <Button type="primary" shape="circle" >
+        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}  >
               HOME
         </Button>
         </Link>

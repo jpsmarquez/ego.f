@@ -3,29 +3,33 @@ import {Link,Redirect} from "react-router-dom";
 import * as firebase from 'firebase';
 import {Aplicacion} from '../config/firebaseconfig';
 import { Button , Form, Input, Card} from 'antd';
-import { black } from "ansi-colors";
-
-
-const A = {type:"A"};
-const E = {type:"E"};
 
 
 export default function Login() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
+  const [tipo,setType] = useState('');
+  const [nombre,setN] = useState('');
 
-    const submit =()=>{
-     
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  const submit =()=>{
+    console.log(email);
+    console.log(password);
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
        var errorMessage = error.message;
        console.log(errorMessage)
-       console.log(email)
-       console.log(password )
-       console.log(".")
+      
+      
+     });
+
+     firebase.database().ref('usuario').push({
+        tipo:"E",
+        email:email,
+        password:password
+      })
+
     
-    });
-   
   };
   return (
     <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
@@ -35,8 +39,8 @@ export default function Login() {
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}>
-                
-                <Input
+
+                <Input type={'email'}
                 placeholder={"correo"}
                 style={{textAlign:'center'}}
                   onChange={(e) => setEmail(e.target.value)}
@@ -44,37 +48,33 @@ export default function Login() {
                   size={"default"}
                 />
               </Form.Item>
+
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}>
-                <Input type="password"
+                <Input 
                 placeholder={"contraseña"}
                 style={{textAlign:'center'}}
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
-                  size={"default"}
-                  
-                />
+                  size={"default"} />
               </Form.Item>
-              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
-                LOG IN
-              </Button>
-              <br/>
-              <Link  to="/FPass">
-              <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              FORGOT PASSWORD?
-              </Button>
-              </Link>
-              <br/>
-              <Link  to="/Register">
-              <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              REGISTER
-              </Button>
-              </Link>
 
+              <Link to={'/'}>
+              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
+                REGISTER
+              </Button>
+              </Link>
+              <br/>
+              <Link  to="/Home">
+             <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+              HOME
+             </Button>
+              </Link>
               </Form>
 
     </div>
 
   );
 };
+
