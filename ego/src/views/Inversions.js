@@ -5,39 +5,38 @@ import * as firebase from "firebase/app";
 
 
 export default function Inversions(props) {
+
   const [inversions,setInversions] = useState([])
   const [ready,setReady] = useState(false)
+  
   useEffect(()=>{
     if (!ready) {
     firebase.database().ref("/inversion/").on("child_added",snap=> {
-      console.log(snap.val())
+
+      console.log(snap.val().titulo)
+
       setReady(true)
+
       let a = [...inversions];
+
       a.push(snap.val());
+
       setInversions(a)
       })
     }
   }, [inversions, ready])
 
 
-
   return (
 
     <div style={{display:'flex', 
     justifyContent: 'space-around'}}>
-
+    
       <Link  to="/Home">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
               HOME
         </Button>
       </Link>
-      <div>
-       
-
-      </div>
-
-
-
 
       </div>   
   );
@@ -97,4 +96,24 @@ ReactDOM.render(<PositionCarouselDemo />, mountNode);
       setInversions(arrayofinversions)
 
       ´
+
+
+      ......
+      const [inversions,setInversions] = useState([])
+  const [ready,setReady] = useState(false)
+  
+  useEffect(()=>{
+    if (!ready) {
+    firebase.database().ref("/inversion/").on("child_added",snap=> {
+      console.log(snap.val())
+      setReady(true)
+      let a = [...inversions];
+      a.push(snap.val());
+      setInversions(a)
+      })
+    }
+  }, [inversions, ready])
+
+
+
 */

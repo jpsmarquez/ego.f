@@ -12,7 +12,9 @@ export default function NewInversion(props) {
     const [tipo,setType] = useState('');
     const [titulo,setT] = useState('');
     const [campos,setC] = useState(['']);
+    
     const [index, setIndex] = useState(0);
+    
     const llenarcampos=(rstring)=>{
       console.log(rstring)
       let c = [...campos]
@@ -20,27 +22,31 @@ export default function NewInversion(props) {
       setC(c)
 
     }
+    
     const [formularios,setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos[0]} />]);
 
     const submit= ()=>{
       firebase.database().ref('inversion').push({
         titulo:titulo,
         tipo:tipo,
-        descrip:desc
+        descrip:desc,
+        campos:setC   
+         //
         
       })
-    };
+     };
+
     const addform= ()=>{
         let f = [...formularios];
         f.push(<Formasdecampo setC={setC} campos={campos} llenarcampos={llenarcampos} value={campos[index]}/>);
         
         setFormularios(f)
-        };
+    };
 
     return (
         <Row >
         <Col span={24}>
-        <label style={{textAlign:'center', fontSize:100 , color: 'white'} }>NEW INVERSION</label>
+        <label style={{textAlign:'center', fontSize:100 , color: 'white'} }>NUEVA INVERSION</label>
         </Col>
 
         <Col span={24}>
@@ -52,7 +58,7 @@ export default function NewInversion(props) {
             wrapperCol={{ span: 24 }}>
             
             <Input
-            placeholder={"titulo"}
+            placeholder={"TITULO"}
             style={{textAlign:'center'}}
               onChange={(e) => setT(e.target.value)}
               value={titulo}
@@ -66,7 +72,7 @@ export default function NewInversion(props) {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
             <Input
-            placeholder={"tipo"}
+            placeholder={"TIPO"}
             style={{textAlign:'center'}}
 
 
@@ -83,7 +89,7 @@ export default function NewInversion(props) {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
             <Input
-            placeholder={"descripcion"}
+            placeholder={"DESCRIPCION"}
             style={{textAlign:'center'}}
               onChange={(e) => setD(e.target.value)}
               value={desc}
@@ -91,8 +97,10 @@ export default function NewInversion(props) {
             />
           </Form.Item>            
           </Col>
+
           {
             formularios.map((item,index)=>{
+
                 return item;
             })
           }
@@ -111,13 +119,13 @@ export default function NewInversion(props) {
 
         <Link  to="/Inversions">
         <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}}>
-            SUBMIT
+            GUARDAR
           </Button>
         </Link>
 
         <Link  to="/Home">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              HOME
+              INICIO
         </Button>
         </Link>
         </div>

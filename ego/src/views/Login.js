@@ -57,18 +57,18 @@ export default function Login() {
                 />
               </Form.Item>
               <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
-                LOG IN
+                ENTRAR
               </Button>
               <br/>
               <Link  to="/FPass">
               <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              FORGOT PASSWORD?
+               ¿OLVIDASTE LA CONTRASEÑA?
               </Button>
               </Link>
               <br/>
               <Link  to="/Register">
               <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              REGISTER
+               REGISTRO
               </Button>
               </Link>
 

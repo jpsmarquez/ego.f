@@ -9,18 +9,18 @@ export default function HomeAdmin(props) {
       justifyContent: 'space-around'}}>
 
         <Button onClick={props.logout} type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              LOG OUT
+              SALIR
         </Button>
 
         <Link  to="/NewInversion">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              NEW INVERSIONS
+              NUEVA INVERSION
         </Button>
         </Link>
         
         <Link  to="/Inversions">
         <Button type="primary" shape="rectangle"style={{backgroundColor:'grey'}} >
-              INVERSIONS
+              INVERSIONES
         </Button>
         </Link>
 
