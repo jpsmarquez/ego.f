@@ -1,67 +1,61 @@
-import React, {useEffect,useState} from "react";
-import {Link} from "react-router-dom";
-import { Button,Carousel, Radio,Col} from 'antd';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Carousel, Radio, Col } from 'antd';
 import * as firebase from "firebase/app";
 
 
 export default function Inversions(props) {
+const [city,setCity] = useState('')
 
-/*
-  const [inversions,setInversions] = useState([])
-  const [ready,setReady] = useState(false)
-  
-  useEffect(()=>{
-    if (!ready) {
-    firebase.database().ref("/inversion/").on("child_added",snap=> {
 
-      console.log(snap.val().titulo)
-
-      setReady(true)
-
-      let a = [...inversions];
-
-      a.push(snap.val());
-
-      setInversions(a)
-      })
-    }
-  }, [inversions, ready])
-*/
   var ref = firebase.database().ref("/inversion");
+  //var string = '';
 
-  ref.on("value", function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-  var childData = childSnapshot.val();
-  var titulo = childData.titulo;
-  var tipo = childData.tipo;
-  var desc = childData.descrip;
-  var campos = childData.campos;
-  
-    //array, value
-  
-  console.log(titulo);
-  console.log(campos);
-  
-  
-   });
-  });
+  useEffect(() => {
+    ref.on("value", function (snapshot) {
+
+      snapshot.forEach(function (childSnapshot) {
+
+        var childData = childSnapshot.val();
 
 
- 
+        var titulo = childData.titulo;
+        var tipo = childData.tipo;
+        var desc = childData.descrip;
+        var campos = childData.campos;
+
+
+        if (campos) {
+          console.log(campos[0]);
+          setCity(campos[0])
+        } else {
+          console.log('test');
+        }
+
+      });
+    });
+  }
+  
+  )
+
+  //option shift f (para identar)
+
+
+
   return (
     
-    <div style={{display:'flex', 
-    justifyContent: 'space-around'}}>
-
-    
-    
-      <Link  to="/Home">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              HOME
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-around'
+    }}>
+      <h1>{city}</h1>
+      <Link to="/Home">
+        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+          HOME
         </Button>
       </Link>
 
-      </div>   
+    </div>
   );
 };
 
@@ -124,7 +118,7 @@ ReactDOM.render(<PositionCarouselDemo />, mountNode);
       ......
       const [inversions,setInversions] = useState([])
   const [ready,setReady] = useState(false)
-  
+
   useEffect(()=>{
     if (!ready) {
     firebase.database().ref("/inversion/").on("child_added",snap=> {

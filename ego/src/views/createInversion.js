@@ -141,3 +141,7 @@ export default function NewInversion(props) {
 }
 //arreglar nav bar
 //styles components
+
+/*
+
+*/
