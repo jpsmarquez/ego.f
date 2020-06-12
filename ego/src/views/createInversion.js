@@ -11,12 +11,14 @@ export default function NewInversion(props) {
     const [desc,setD] = useState('');
     const [tipo,setType] = useState('');
     const [titulo,setT] = useState('');
+
     const [campos,setC] = useState(['']);
-    
+
     const [index, setIndex] = useState(0);
     
     const llenarcampos=(rstring)=>{
       console.log(rstring)
+      
       let c = [...campos]
       c[0]=rstring
       setC(c)
@@ -30,21 +32,22 @@ export default function NewInversion(props) {
         titulo:titulo,
         tipo:tipo,
         descrip:desc,
-        campos:setC   
-         //
+        campos:campos
+         
         
       })
      };
 
     const addform= ()=>{
         let f = [...formularios];
+
         f.push(<Formasdecampo setC={setC} campos={campos} llenarcampos={llenarcampos} value={campos[index]}/>);
         
         setFormularios(f)
     };
 
     return (
-        <Row >
+        <Row>
         <Col span={24}>
         <label style={{textAlign:'center', fontSize:100 , color: 'white'} }>NUEVA INVERSION</label>
         </Col>
@@ -99,7 +102,7 @@ export default function NewInversion(props) {
           </Col>
 
           {
-            formularios.map((item,index)=>{
+            formularios.map((item)=>{
 
                 return item;
             })
