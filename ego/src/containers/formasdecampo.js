@@ -10,7 +10,7 @@ export default function FormasDeCampo({llenarcampos, value}) {
     return (
        <Col span={6} style={{marginVertical:10}}>
 
-        <TextArea style={{height:'fit-content'}} rows={4} onChange={(e) => llenarcampos(e.target.value)} 
+        <TextArea style={{height:'fit-content'}} rows={4} onChange={(e) => llenarcampos(e.target.value)  } 
         placeholder={"CONTENIDO DE CAMPO"} />
 
         </Col>

@@ -6,6 +6,7 @@ import * as firebase from "firebase/app";
 
 export default function Inversions(props) {
 
+/*
   const [inversions,setInversions] = useState([])
   const [ready,setReady] = useState(false)
   
@@ -25,12 +26,34 @@ export default function Inversions(props) {
       })
     }
   }, [inversions, ready])
+*/
+  var ref = firebase.database().ref("/inversion");
+
+  ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+  var childData = childSnapshot.val();
+  var titulo = childData.titulo;
+  var tipo = childData.tipo;
+  var desc = childData.descrip;
+  var campos = childData.campos;
+  
+    //array, value
+  
+  console.log(titulo);
+  console.log(campos);
+  
+  
+   });
+  });
 
 
+ 
   return (
-
+    
     <div style={{display:'flex', 
     justifyContent: 'space-around'}}>
+
+    
     
       <Link  to="/Home">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >

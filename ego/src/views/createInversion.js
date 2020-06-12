@@ -20,12 +20,13 @@ export default function NewInversion(props) {
       console.log(rstring)
       
       let c = [...campos]
-      c[0]=rstring
+      let n =campos.length
+      c[n]=rstring
       setC(c)
 
     }
     
-    const [formularios,setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos[0]} />]);
+    const [formularios,setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos} />]);
 
     const submit= ()=>{
       firebase.database().ref('inversion').push({
