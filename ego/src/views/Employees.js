@@ -10,7 +10,7 @@ export default function Employees(props) {
       justifyContent: 'space-around'}}>
         <Link  to="/Home">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}  >
-              HOME
+              INICIO
         </Button>
         </Link>
         </div>   

@@ -4,7 +4,6 @@ import { Button, Carousel, Radio, Col, Card } from 'antd';
 import * as firebase from "firebase/app";
 import { black, blue } from "ansi-colors";
 
-
 export default function Inversions(props) {
   
   const [arrayofdb, setArrayofdb] = useState({})
@@ -13,6 +12,7 @@ export default function Inversions(props) {
 
   useEffect(() => {
     if (!variable) {
+
       ref.once("value",  (snapshot) => { 
 
         snapshot.forEach((childSnapshot)=> {
@@ -36,9 +36,9 @@ export default function Inversions(props) {
   
           }
         });
-    setVariable(true)
+     setVariable(true)
       });
-    }   
+   }   
 })
 
 
@@ -69,10 +69,24 @@ export default function Inversions(props) {
     
       <Link to="/Home">
         <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
-          HOMEH
+          INICIO
         </Button>
       </Link>
 
+      {
+
+      cardsejemplo.map((item,index) =>{
+    
+        return (
+
+          <Card style={{ width: 300 }} key={index}>
+            {item.titulo}
+            <br/>
+            {item.ejemplo2}
+          </Card>
+        )
+      })
+    }
 
      
 

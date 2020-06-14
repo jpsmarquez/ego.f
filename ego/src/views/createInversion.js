@@ -1,3 +1,4 @@
+
 import React,{useState} from "react";
 import { Button , Form, Input, Row, Col, Divider} from 'antd';
 import Formasdecampo from '../containers/formasdecampo';
@@ -12,7 +13,7 @@ export default function NewInversion(props) {
     const [tipo,setType] = useState('');
     const [titulo,setT] = useState('');
 
-    const [campos,setC] = useState([]);
+    const [campos,setC] = useState('');
 
     const [index, setIndex] = useState(0);
     
