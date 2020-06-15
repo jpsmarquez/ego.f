@@ -30,9 +30,7 @@ export default function Login() {
   };
   return (
     <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
-           {
-             error !== false ? <h1>{error}</h1> : null
-           }
+           
             <label style={{textAlign:'center', fontSize:150 , color: 'white'} }>GRUPO EGO </label>
 
             <br/>
@@ -76,6 +74,10 @@ export default function Login() {
                REGISTRO
               </Button>
               </Link>
+
+              {
+             error !== false ? <h1>{error}</h1> : null
+              }
 
               </Form>
 

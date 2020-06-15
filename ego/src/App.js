@@ -29,11 +29,12 @@ export default function App() {
 
   useEffect(()=>{
         firebase.auth().onAuthStateChanged(function(user) {
-          console.log(user);
+          console.log(user)
           if (user) {
             firebase.database().ref("/usuario/"+user.uid).once("value",snap=> {
-            console.log(snap.val().tipo)
+             console.log(snap);
             setlogged(snap.val().tipo);
+            
             })
           } else {
             setlogged(null) 

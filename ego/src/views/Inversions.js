@@ -15,23 +15,24 @@ export default function Inversions(props) {
   useEffect(() => {
     if (!variable) {
 
-      ref.once("value",  (snapshot) => { 
-
-        snapshot.forEach((childSnapshot)=> {
-  
+      ref.once("value",(snapshot) => { 
+        console.log(snapshot)
+      snapshot.forEach((childSnapshot)=> {
+         console.log(childSnapshot)
           const childData = childSnapshot.val();
+          console.log(childData)
           const titulo = childData.titulo;
           const tipo = childData.tipo;
           const desc = childData.descrip;
           const campos = childData.campos;
-          const no_of_vals = [campos.length];
-          console.log(campos);
-  
+          
+
   
           if (campos) {
-            setArrayofdb([...arrayofdb,{ titulo: titulo, tipo: tipo, desc: desc, campos: campos }])
-  
-            //setArrayofdb([titulo,tipo, desc, campos ])
+            const arraydbaux = arrayofdb;
+            arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
+            setArrayofdb(arraydbaux)
+            
   
           } else {
             console.log('test');
@@ -39,9 +40,10 @@ export default function Inversions(props) {
           }
         });
      setVariable(true)
+
       });
    }   
-})
+},[])
 
 
   //option shift f (para identar)
@@ -64,14 +66,15 @@ export default function Inversions(props) {
           INICIO
         </Button>
       </Link>
-
-      {
-      
+      {console.log('-->', arrayofdb)}
+      
+      {
+    
       arrayofdb.map((item,index) =>{
-    
+      console.log(index)
         return (
 
-          <Card style={{ width: 300 }} key={index}>
+          <Card style={{ width: 150 }} key={index}>
             {item.titulo}
             <br/>
             {item.tipo}
@@ -85,7 +88,7 @@ export default function Inversions(props) {
                 )
               })
               }
-            <br/>
+           
           </Card>
         )
       })
@@ -177,7 +180,18 @@ ReactDOM.render(<PositionCarouselDemo />, mountNode);
       } else {
         console.log('test');
       }
-
+---__--_
+renderChoices() {
+    var data_list = []
+    firebase.database().ref("orgs").once("value").then((snapshot) => {
+        snapshot.forEach(function(childSnapshot) {
+            var key = childSnapshot.key;
+            var childData = childSnapshot.val().name;
+            data_list.push(childData);
+        });   
+        console.log(data_list, data_list.length); 
+    });
+}
 
 -----
  {
