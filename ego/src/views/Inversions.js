@@ -1,103 +1,108 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card } from 'antd';
-import * as firebase from "firebase/app";
-import { black, blue } from "ansi-colors";
+import React, { useEffect, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { Button, Carousel, Radio, Col, Card ,Row} from 'antd';
+import * as firebase from "firebase/app";
+import { black, blue } from "ansi-colors";
 
-export default function Inversions(props) {
-  
-  
-  var ref = firebase.database().ref("/inversion");
-  const [variable, setVariable] = useState(false)
-  const [arrayofdb, setArrayofdb] = useState([])
- 
+export default function Inversions(props) {
 
-  useEffect(() => {
-    if (!variable) {
 
-      ref.once("value",(snapshot) => { 
+  var ref = firebase.database().ref("/inversion");
+  const [variable, setVariable] = useState(false)
+  const [arrayofdb, setArrayofdb] = useState([])
+
+
+
+  useEffect(() => {
+    if (!variable) {
+
+      ref.once("value", (snapshot) => {
         console.log(snapshot)
-      snapshot.forEach((childSnapshot)=> {
-         console.log(childSnapshot)
-          const childData = childSnapshot.val();
+        snapshot.forEach((childSnapshot) => {
+          console.log(childSnapshot)
+          const childData = childSnapshot.val();
           console.log(childData)
-          const titulo = childData.titulo;
-          const tipo = childData.tipo;
-          const desc = childData.descrip;
-          const campos = childData.campos;
-          
+          const titulo = childData.titulo;
+          const tipo = childData.tipo;
+          const desc = childData.descrip;
+          const campos = childData.campos;
 
-  
-          if (campos) {
+
+
+          if (campos) {
             const arraydbaux = arrayofdb;
-            arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
-            setArrayofdb(arraydbaux)
-            
-  
-          } else {
-            console.log('test');
-  
-          }
-        });
-     setVariable(true)
-
-      });
-   }   
-},[])
+            arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
+            setArrayofdb(arraydbaux)
 
 
-  //option shift f (para identar)
+          } else {
+            console.log('test');
 
-  
+          }
+        });
+        setVariable(true)
+
+      });
+    }
+  }, [])
+
+
+  //option shift f (para identar)
 
 
 
-  return (
 
-    <div style={{
-      display: 'flex',
-      justifyContent: 'space-around'
-    }}>
 
-      <br />
+  return (
 
-      <Link to="/Home">
-        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
-          INICIO
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-around'
+    }}>
+       <Row>
+      <Col span={24}>
+        <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSIONES</label>
+      </Col>
+      
+
+   
+      <Col span={24}>
+      <Link to="/Home">
+        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+          INICIO
         </Button>
-      </Link>
-      {console.log('-->', arrayofdb)}
-      
+      </Link>
+      </Col>
       {
-    
-      arrayofdb.map((item,index) =>{
-      console.log(index)
-        return (
 
-          <Card style={{ width: 150 }} key={index}>
-            {item.titulo}
-            <br/>
-            {item.tipo}
-            <br/>
-            {item.desc}
-            
-            {
-              item.campos.map((item,index)=>{
-                return (
-                  <p>{item}</p>
-                )
-              })
+        arrayofdb.map((item, index) => {
+          console.log(index)
+          return (
+
+            <Card style={{ width: 150 }} key={index} >
+              {item.titulo}
+              <br />
+              {item.tipo}
+              <br />
+              {item.desc}
+
+              {
+                item.campos.map((item, index) => {
+                  return (
+                    <p>{item}</p>
+                  )
+                })
               }
-           
-          </Card>
-        )
-      })
-    }
 
-     
+            </Card>
+          )
+        })
+      }
 
-    </div>
-  );
+
+  </Row>
+    </div>
+  );
 };
 
 
@@ -188,15 +193,15 @@ renderChoices() {
             var key = childSnapshot.key;
             var childData = childSnapshot.val().name;
             data_list.push(childData);
-        });   
-        console.log(data_list, data_list.length); 
+        });
+        console.log(data_list, data_list.length);
     });
 }
 
 -----
  {
       cardsejemplo.map((item,index) =>{
-    
+
         return (
 
           <Card style={{ width: 300 }} key={index}>

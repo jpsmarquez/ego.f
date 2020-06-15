@@ -1,157 +1,159 @@
 
-import React,{useState} from "react";
-import { Button , Form, Input, Row, Col, Divider} from 'antd';
+import React, { useState } from "react";
+import { Button, Form, Input, Row, Col, Divider } from 'antd';
 import Formasdecampo from '../containers/formasdecampo';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Column from "antd/lib/table/Column";
 import * as firebase from 'firebase';
-import {Aplicacion} from '../config/firebaseconfig';
+import { Aplicacion } from '../config/firebaseconfig';
 
 export default function NewInversion(props) {
-    
-    const [desc,setD] = useState('');
-    const [tipo,setType] = useState('');
-    const [titulo,setT] = useState('');
 
-    const [campos,setC] = useState('');
+  const [desc, setD] = useState('');
+  const [tipo, setType] = useState('');
+  const [titulo, setT] = useState('');
 
-    const [index, setIndex] = useState(0);
-    
-    const llenarcampos=(rstring)=>{
-      console.log(rstring)
-      
-      let c = [...campos]
-      let n = campos.length
-      c[n]=rstring
-      setC(c)
+  const [campos, setC] = useState('');
 
-    }
-    
-    const [formularios,setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos} />]);
+  const [index, setIndex] = useState(0);
 
-    const submit= ()=>{
-      firebase.database().ref('inversion').push({
-        titulo:titulo,
-        tipo:tipo,
-        descrip:desc,
-        campos:campos
-         
-        
-      })
-     };
+  const llenarcampos = (rstring) => {
+    console.log(rstring)
 
-    const addform= ()=>{
-        let f = [...formularios];
+    let c = [...campos]
+    let n = campos.length
+    c[n] = rstring
+    setC(c)
 
-        f.push(<Formasdecampo setC={setC} campos={campos} llenarcampos={llenarcampos} value={campos[index]}/>);
-        
-        setFormularios(f)
-    };
+  }
+
+  const [formularios, setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos} />]);
+
+  const submit = () => {
+    firebase.database().ref('inversion').push({
+      titulo: titulo,
+      tipo: tipo,
+      descrip: desc,
+      campos: campos
 
 
-    const deletelastelement= ()=>{
-      let f = [...formularios];
-
-      f.pop();
-      
-      setFormularios(f)
+    })
   };
 
-    return (
-        <Row>
-        <Col span={24}>
-        <label style={{textAlign:'center', fontSize:100 , color: 'white'} }>NUEVA INVERSION</label>
-        </Col>
+  const addform = () => {
+    let f = [...formularios];
 
-        <Col span={24}>
-        <Form style={{textAlign:'center'}} >
-        <Row>
-          <Col span={6} >
-          <Form.Item
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}>
-            
-            <Input
-            placeholder={"TITULO"}
-            style={{textAlign:'center'}}
-              onChange={(e) => setT(e.target.value)}
-              value={titulo}
-              size={"default"}
-            />
-          </Form.Item>
-          </Col>
+    f.push(<Formasdecampo setC={setC} campos={campos} llenarcampos={llenarcampos} value={campos[index]} />);
 
-          <Col span={6} >
-          <Form.Item
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}>
-            <Input
-            placeholder={"TIPO"}
-            style={{textAlign:'center'}}
+    setFormularios(f)
+  };
 
 
-              onChange={(e) => setType(e.target.value)}
+  const deletelastelement = () => {
+    let f = [...formularios];
 
-              value={tipo}
-              size={"default"}
-            />
-          </Form.Item> 
-          </Col>
+    f.pop();
 
-          <Col span={6} >
-          <Form.Item
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}>
-            <Input
-            placeholder={"DESCRIPCION"}
-            style={{textAlign:'center'}}
-              onChange={(e) => setD(e.target.value)}
-              value={desc}
-              size={"default"}
-            />
-          </Form.Item>            
-          </Col>
+    setFormularios(f)
+  };
 
-          {
-            formularios.map((item)=>{
+  return (
+    <Row>
+      <Col span={24}>
+        <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>NUEVA INVERSION</label>
+      </Col>
+
+      <Col span={24}>
+        <Form style={{ textAlign: 'center' }} >
+          <Row>
+            <Col span={6} >
+              <Form.Item
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}>
+
+                <Input
+                  placeholder={"TITULO"}
+                  style={{ textAlign: 'center' }}
+                  onChange={(e) => setT(e.target.value)}
+                  value={titulo}
+                  size={"default"}
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={6} >
+              <Form.Item
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}>
+                <Input
+                  placeholder={"TIPO"}
+                  style={{ textAlign: 'center' }}
+
+
+                  onChange={(e) => setType(e.target.value)}
+
+                  value={tipo}
+                  size={"default"}
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={6} >
+              <Form.Item
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}>
+                <Input
+                  placeholder={"DESCRIPCION"}
+                  style={{ textAlign: 'center' }}
+                  onChange={(e) => setD(e.target.value)}
+                  value={desc}
+                  size={"default"}
+                />
+              </Form.Item>
+            </Col>
+
+            {
+              formularios.map((item) => {
 
                 return item;
-            })
-          }
+              })
+            }
 
-        </Row>
+          </Row>
         </Form>
-        </Col>
-        
-        <Col span={24}>
+      </Col>
 
-        <div style={{display:'flex', 
-        justifyContent: 'space-around'}}>
-        <Button type="primary" onClick={addform} style={{backgroundColor:'grey'}}>
+      <Col span={24}>
+
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-around'
+        }}>
+          <Button type="primary" onClick={addform} style={{ backgroundColor: 'grey' }}>
             +
           </Button>
 
-          <Button type="primary" onClick={deletelastelement} style={{backgroundColor:'grey'}}>
+          <Button type="primary" onClick={deletelastelement} style={{ backgroundColor: 'grey' }}>
             -
           </Button>
 
-        <Link  to="/Inversions">
-        <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}}>
-            GUARDAR
+          <Link to="/Inversions">
+            <Button type="primary" onClick={submit} style={{ backgroundColor: 'grey' }}>
+              GUARDAR
           </Button>
-        </Link>
+          </Link>
 
-        <Link  to="/Home">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+          <Link to="/Home">
+            <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
               INICIO
         </Button>
-        </Link>
+          </Link>
         </div>
 
-        </Col>
-        </Row>
+      </Col>
+    </Row>
 
-    )
+  )
 }
 //arreglar nav bar
 //styles components
@@ -166,7 +168,7 @@ import * as firebase from 'firebase';
 import {Aplicacion} from '../config/firebaseconfig';
 
 export default function NewInversion(props) {
-    
+
     const [desc,setD] = useState('');
     const [tipo,setType] = useState('');
     const [titulo,setT] = useState('');
@@ -174,17 +176,17 @@ export default function NewInversion(props) {
     const [campos,setC] = useState(['']);
 
     const [index, setIndex] = useState(0);
-    
+
     const llenarcampos=(rstring)=>{
       console.log(rstring)
-      
+
       let c = [...campos]
       let n =campos.length
       c[n]=rstring
       setC(c)
 
     }
-    
+
     const [formularios,setFormularios] = useState([<Formasdecampo llenarcampos={llenarcampos} value={campos} />]);
 
     const submit= ()=>{
@@ -193,8 +195,8 @@ export default function NewInversion(props) {
         tipo:tipo,
         descrip:desc,
         campos:campos
-         
-        
+
+
       })
      };
 
@@ -202,7 +204,7 @@ export default function NewInversion(props) {
         let f = [...formularios];
 
         f.push(<Formasdecampo setC={setC} campos={campos} llenarcampos={llenarcampos} value={campos[index]}/>);
-        
+
         setFormularios(f)
     };
 
@@ -219,7 +221,7 @@ export default function NewInversion(props) {
           <Form.Item
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
-            
+
             <Input
             placeholder={"TITULO"}
             style={{textAlign:'center'}}
@@ -244,7 +246,7 @@ export default function NewInversion(props) {
               value={tipo}
               size={"default"}
             />
-          </Form.Item> 
+          </Form.Item>
           </Col>
 
           <Col span={6} >
@@ -258,7 +260,7 @@ export default function NewInversion(props) {
               value={desc}
               size={"default"}
             />
-          </Form.Item>            
+          </Form.Item>
           </Col>
 
           {
@@ -271,10 +273,10 @@ export default function NewInversion(props) {
         </Row>
         </Form>
         </Col>
-        
+
         <Col span={24}>
 
-        <div style={{display:'flex', 
+        <div style={{display:'flex',
         justifyContent: 'space-around'}}>
         <Button type="primary" onClick={addform} style={{backgroundColor:'grey'}}>
             +

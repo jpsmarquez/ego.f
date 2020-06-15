@@ -1,85 +1,90 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card } from 'antd';
-import * as firebase from "firebase/app";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Carousel, Radio, Col, Card } from 'antd';
+import * as firebase from "firebase/app";
 
 
-export default function Inversions(props) {
-  
-  
-  var ref = firebase.database().ref("/usuario");
-  const [variable, setVariable] = useState(false)
-  const [usuarios, setUsuarios] = useState([])
- 
+export default function Employees(props) {
 
-  useEffect(() => {
-    if (!variable) {
 
-      ref.once("value",  (snapshot) => { 
+  var ref = firebase.database().ref("/usuario");
+  const [variable, setVariable] = useState(false)
+  const [arrayofdb, setArrayofdb] = useState([])
 
-        snapshot.forEach((childSnapshot)=> {
-  
-          const childData = childSnapshot.val();
-          console.log(childData.email)
-          /*
-          const titulo = childData.titulo;
-          const tipo = childData.tipo;
-          const desc = childData.descrip;
-          
-  
-  
-          if (campos) {
-            setUsuarios([...usuarios,{ titulo: titulo, tipo: tipo, desc: desc}])
 
-  
-          } else {
-            console.log('test');
-  
-          }
+  useEffect(() => {
+    if (!variable) {
 
-            {item.titulo}
-            <br/>
-            {item.tipo}
-            <br/>
-            {item.desc}
- 
-            <br/>
-          */
-        });
-     setVariable(true)
-      });
-   }   
-})
+      ref.once("value", (snapshot) => {
+        console.log(snapshot)
+        snapshot.forEach((childSnapshot) => {
+          console.log(childSnapshot)
+          const childData = childSnapshot.val();
+          console.log(childData)
+          const tipo = childData.tipo;
+          const email = childData.email;
+          const name = childData.name;
 
-  return (
 
-    <div style={{
-      display: 'flex',
-      justifyContent: 'space-around'
-    }}>
-      <br />
 
-      <Link to="/Home">
-        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
-          INICIO
-        </Button>
-      </Link>
 
-      {
-      
-      usuarios.map((item,index) =>{
-    
-        return (
+          if (tipo) {
+            const arraydbaux = arrayofdb;
+            arraydbaux.push({ tipo: tipo,email:email,name:name })
+            setArrayofdb(arraydbaux)
 
-          <Card style={{ width: 300 }} key={index}>
 
-          </Card>
-        )
-      })
-    }
+          } else {
+            console.log('test');
 
-     
+          }
+        });
+        setVariable(true)
 
-    </div>
-  );
+      });
+    }
+  }, [])
+
+  return (
+
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-around'
+    }}>
+
+
+
+
+      {
+
+        arrayofdb.map((item, index) => {
+          console.log(index)
+          return (
+
+            <Card style={{ width: 300 }} key={index}>
+              {item.name}
+              <br />
+              {item.email}
+              <br />
+              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
+              <br />
+              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
+              <br />
+
+
+
+            </Card>
+          )
+        })
+      }
+
+
+      <Link to="/Home">
+        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
+      </Link>
+
+
+
+    </div>
+  );
 };

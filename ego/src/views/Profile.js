@@ -1,18 +1,27 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import { Button} from 'antd';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Carousel, Radio, Col, Card } from 'antd';
+import * as firebase from "firebase/app";
 
 
-export default function HomeAdmin(props) {
-    return (
-      <div style={{display:'flex', 
-      justifyContent: 'space-around'}}>
-        <Link  to="/Home">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}  >
-              HOME
-        </Button>
-        </Link>
+export default function Employees(props) {
 
-        </div>   
-    );
+
+
+  return (
+
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-around'
+    }}>
+
+
+      <Link to="/Home">
+        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
+      </Link>
+
+
+
+    </div>
+  );
 };

@@ -31,7 +31,7 @@ export default function App() {
         firebase.auth().onAuthStateChanged(function(user) {
           console.log(user)
           if (user) {
-            firebase.database().ref("/usuario/"+user.uid).once("value",snap=> {
+            firebase.database().ref("/usuario/"+user.uid).on("value",snap=> {
              console.log(snap);
             setlogged(snap.val().tipo);
             

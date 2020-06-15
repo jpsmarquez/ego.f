@@ -24,7 +24,7 @@ export default function Login() {
      });
 
      firebase.database().ref('usuario').push({
-        tipo:"E",
+        tipo:"A",
         email:email,
         password:password
       })
