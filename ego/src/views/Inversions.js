@@ -6,9 +6,11 @@ import { black, blue } from "ansi-colors";
 
 export default function Inversions(props) {
   
-  const [arrayofdb, setArrayofdb] = useState({})
+  
   var ref = firebase.database().ref("/inversion");
   const [variable, setVariable] = useState(false)
+  const [arrayofdb, setArrayofdb] = useState([])
+ 
 
   useEffect(() => {
     if (!variable) {
@@ -23,11 +25,11 @@ export default function Inversions(props) {
           const desc = childData.descrip;
           const campos = childData.campos;
           const no_of_vals = [campos.length];
-          console.log(no_of_vals);
+          console.log(campos);
   
   
           if (campos) {
-            setArrayofdb({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
+            setArrayofdb([...arrayofdb,{ titulo: titulo, tipo: tipo, desc: desc, campos: campos }])
   
             //setArrayofdb([titulo,tipo, desc, campos ])
   
@@ -44,18 +46,8 @@ export default function Inversions(props) {
 
   //option shift f (para identar)
 
-  const cardsejemplo = [
-    {
-      titulo:'titulo',
-      ejemplo2:'eje2'
-    },{
-      titulo:'titulo',
-      ejemplo2:'eje2'
-    },{
-      titulo:'titulo',
-      ejemplo2:'eje2'
-    }
-  ];
+  
+
 
 
   return (
@@ -66,7 +58,7 @@ export default function Inversions(props) {
     }}>
 
       <br />
-    
+
       <Link to="/Home">
         <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
           INICIO
@@ -74,15 +66,26 @@ export default function Inversions(props) {
       </Link>
 
       {
-
-      cardsejemplo.map((item,index) =>{
+      
+      arrayofdb.map((item,index) =>{
     
         return (
 
           <Card style={{ width: 300 }} key={index}>
             {item.titulo}
             <br/>
-            {item.ejemplo2}
+            {item.tipo}
+            <br/>
+            {item.desc}
+            
+            {
+              item.campos.map((item,index)=>{
+                return (
+                  <p>{item}</p>
+                )
+              })
+              }
+            <br/>
           </Card>
         )
       })

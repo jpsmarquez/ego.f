@@ -13,12 +13,13 @@ const E = {type:"E"};
 export default function Login() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
-
+  const [error, setError]=useState(false);
     const submit =()=>{
      
 
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
        var errorMessage = error.message;
+       setError(errorMessage)
        console.log(errorMessage)
        console.log(email)
        console.log(password )
@@ -29,7 +30,11 @@ export default function Login() {
   };
   return (
     <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
+           {
+             error !== false ? <h1>{error}</h1> : null
+           }
             <label style={{textAlign:'center', fontSize:150 , color: 'white'} }>GRUPO EGO </label>
+
             <br/>
             <Form style={{textAlign:'center',flex:'auto'}} >
               <Form.Item

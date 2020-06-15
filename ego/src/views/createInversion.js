@@ -21,8 +21,8 @@ export default function NewInversion(props) {
       console.log(rstring)
       
       let c = [...campos]
-      
-      c[0]=rstring
+      let n = campos.length
+      c[n]=rstring
       setC(c)
 
     }
@@ -47,6 +47,15 @@ export default function NewInversion(props) {
         
         setFormularios(f)
     };
+
+
+    const deletelastelement= ()=>{
+      let f = [...formularios];
+
+      f.pop();
+      
+      setFormularios(f)
+  };
 
     return (
         <Row>
@@ -120,6 +129,10 @@ export default function NewInversion(props) {
         justifyContent: 'space-around'}}>
         <Button type="primary" onClick={addform} style={{backgroundColor:'grey'}}>
             +
+          </Button>
+
+          <Button type="primary" onClick={deletelastelement} style={{backgroundColor:'grey'}}>
+            -
           </Button>
 
         <Link  to="/Inversions">
