@@ -6,24 +6,24 @@ import { Button , Form, Input, Card} from 'antd';
 import { black } from "ansi-colors";
 
 
-const A = {type:"A"};
-const E = {type:"E"};
+
 
 
 export default function Login() {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
   const [error, setError]=useState(false);
+
     const submit =()=>{
      
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
        var errorMessage = error.message;
        setError(errorMessage)
        console.log(errorMessage)
        console.log(email)
        console.log(password )
-       console.log(".")
+
     
     });
    
@@ -46,10 +46,12 @@ export default function Login() {
                   value={email}
                   size={"default"}
                 />
+
               </Form.Item>
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}>
+
                 <Input type="password"
                 placeholder={"contraseña"}
                 style={{textAlign:'center'}}

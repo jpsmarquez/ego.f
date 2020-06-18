@@ -15,7 +15,6 @@ import Profile from './views/Profile';
 import ProfileEmp from './views/ProfileEmp';
 import FPass from './views/FPass';
 import NewInversion from './views/createInversion';
-import SwitchHome from './views/switchHome';
 import Register from './views/register';
 
 

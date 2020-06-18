@@ -10,25 +10,33 @@ export default function Login() {
   const [password, setPassword]=useState('');
   const [tipo,setType] = useState('');
   const [nombre,setN] = useState('');
+  const [error, setError]=useState('');
+  const [UsuarioCreado,setUsuarioCreado]=useState('');
+
 
 
   const submit =()=>{
     console.log(email);
     console.log(password);
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-       var errorMessage = error.message;
-       console.log(errorMessage)
-      
-      
-     });
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+      // Update successful.
+      console.log('success')
 
-     firebase.database().ref('usuario').push({
-        tipo:"A",
-        email:email,
-        password:password
-      })
-
+      setUsuarioCreado("USUARIO CREADO")
+      console.log(UsuarioCreado)
+      
+       }, (error) => {
+        var errorMessage = error.message;
+        setError(errorMessage);
+      // An error happened.
+      console.log(error)
+      }).catch(function(error) {
+ 
+      
+     })
+//add to firebase db with  email and passwords requirements
+     
     
   };
   return (
@@ -60,15 +68,21 @@ export default function Login() {
                   size={"default"} />
               </Form.Item>
 
-              <Link to={'/'}>
+
               <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
-                REGISTER
+                REGISTRO
               </Button>
-              </Link>
-              <br/>
+              
+              {
+              UsuarioCreado ? <h1>{UsuarioCreado} </h1> : <h1>{error} </h1>
+              }
+              
+              
+
+             
               <Link  to="/Home">
              <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              HOME
+              INICIO
              </Button>
               </Link>
               </Form>

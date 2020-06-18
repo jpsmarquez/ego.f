@@ -29,6 +29,7 @@ export default function Inversions(props) {
 
 
 
+
           if (campos) {
             const arraydbaux = arrayofdb;
             arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
@@ -45,12 +46,14 @@ export default function Inversions(props) {
       });
     }
   }, [])
+  
+  /*option shift f (para identar)
+    const inversion=(id) => {
+      firebase.database().ref('inversion'+inversion.id)
 
-
-  //option shift f (para identar)
-
-
-
+    };
+    onClick={inversion}
+*/
 
 
   return (
@@ -76,9 +79,9 @@ export default function Inversions(props) {
       {
 
         arrayofdb.map((item, index) => {
-          console.log(index)
-          return (
 
+          return (
+            
             <Card style={{ width: 150 }} key={index} >
               {item.titulo}
               <br />

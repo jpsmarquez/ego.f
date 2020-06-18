@@ -6,7 +6,9 @@ import { Button} from 'antd';
 export default function HomeAdmin(props) {
     return (
       <div style={{display:'flex', 
-      justifyContent: 'space-around'}}>
+      justifyContent: 'space-around'
+      
+      }}>
 
         <Button onClick={props.logout} type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
               SALIR

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card } from 'antd';
+import { Button, Carousel, Radio, Col, Card ,Row} from 'antd';
 import * as firebase from "firebase/app";
 
 
@@ -30,7 +30,7 @@ export default function Employees(props) {
 
           if (tipo) {
             const arraydbaux = arrayofdb;
-            arraydbaux.push({ tipo: tipo,email:email,name:name })
+            arraydbaux.push({ tipo: tipo, email: email, name: name })
             setArrayofdb(arraydbaux)
 
 
@@ -51,40 +51,46 @@ export default function Employees(props) {
       display: 'flex',
       justifyContent: 'space-around'
     }}>
+      <Row>
+        <Col span={24}>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>EMPLEADOS</label>
+        </Col>
+
+        <Link to="/Home">
+          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
+        </Link>
+
+
+
+        {
+
+          arrayofdb.map((item, index) => {
+            console.log(index)
+            return (
+
+
+
+              <Card style={{ width: 300 }} key={index}>
+                {item.name}
+                <br />
+                {item.email}
+                <br />
+                <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
+                <br />
+                <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
+                <br />
+
+
+
+              </Card>
+            )
+          })
+        }
 
 
 
 
-      {
-
-        arrayofdb.map((item, index) => {
-          console.log(index)
-          return (
-
-            <Card style={{ width: 300 }} key={index}>
-              {item.name}
-              <br />
-              {item.email}
-              <br />
-              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
-              <br />
-              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
-              <br />
-
-
-
-            </Card>
-          )
-        })
-      }
-
-
-      <Link to="/Home">
-        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
-      </Link>
-
-
-
+      </Row>
     </div>
-  );
-};
+      );
+    };
