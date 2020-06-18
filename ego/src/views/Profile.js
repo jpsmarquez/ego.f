@@ -21,8 +21,6 @@ export default function Employees(props) {
 
   const submitpassword = () => {
 
-    
-    
     user.updatePassword(newpassword).then(() => {
       // Update successful.
       console.log('success')

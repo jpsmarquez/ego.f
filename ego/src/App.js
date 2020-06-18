@@ -20,6 +20,7 @@ import Register from './views/register';
 
 export default function App() {
   const [logged, setlogged]=useState(null)
+  
 
   const logout=()=>{
   firebase.auth().signOut()
@@ -30,11 +31,11 @@ export default function App() {
         firebase.auth().onAuthStateChanged(function(user) {
           console.log(user)
           if (user) {
-            firebase.database().ref("/usuario/"+user.uid).on("value",snap=> {
-             console.log(snap);
-            setlogged(snap.val().tipo);
+
+             
+            setlogged(true);
             
-            })
+           
           } else {
             setlogged(null) 
           }
@@ -47,45 +48,45 @@ export default function App() {
         <Route exact path="/" render={(props)=>(logged?<Redirect to="/Home" />:<Login {...props} /> )}/>
       
         <Route exact path="/Home"render={(props)=>(logged?
-          logged==="A" ?
+
             <HomeA {...props}  logout={logout} />
-            : <HomeE {...props}  logout={logout} />
+
         :<Login {...props}/> )} />
 
         <Route exact path="/Inversions"render={(props)=>(logged?
-          logged==="A" ?
+          
             <Inversions {...props}  logout={logout} />
-            : <InversionsEmp {...props}  logout={logout} />
+            
         :<Login {...props}/> )} />
 
         <Route exact path="/Inversion"render={(props)=>(logged?
-          logged==="A" ?
+          
             <Inversion {...props}  logout={logout} />
-            : <InversionEmployee {...props}  logout={logout} />
+            
         :<Login {...props}/> )} />
 
         <Route exact path="/Profile"render={(props)=>(logged?
-          logged==="A" ?
+          
             <Profile {...props}  logout={logout} />
-            : <ProfileEmp {...props}  logout={logout} />
+            
         :<Login {...props}/> )} />
 
         <Route exact path="/Employees"render={(props)=>(logged?
-          logged==="A" ?
+         
             <Employees {...props}  logout={logout} />
-            :  null 
+            
         :<Login {...props}/> )} />
 
         <Route exact path="/Employee"render={(props)=>(logged?
-          logged==="A" ?
+          
             <Employee {...props}  logout={logout} />
-            :  null 
+           
         :<Login {...props}/> )} />
 
         <Route exact path="/NewInversion"render={(props)=>(logged?
-          logged==="A" ?
+          
             <NewInversion {...props}  logout={logout} />
-            :  null 
+             
         :<Login {...props}/> )} />
 
         <Route exact path='/FPass' component={FPass}/>

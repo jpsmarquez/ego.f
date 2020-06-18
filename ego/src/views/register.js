@@ -16,8 +16,7 @@ export default function Login() {
 
 
   const submit =()=>{
-    console.log(email);
-    console.log(password);
+    
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
       // Update successful.
