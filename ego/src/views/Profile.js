@@ -9,10 +9,14 @@ export default function Employees(props) {
   let user = firebase.auth().currentUser
   let [newemail, setEmail] = useState('');
   let [newpassword, setPassword] = useState('');
-  console.log(user.password)
+  let [confirmedP,setConfirmP]= useState('');
+  const [error, setError]=useState(false);
+
+  
+  
   let credential = firebase.auth.EmailAuthProvider.credential(
     user.email,
-    '123456'
+    confirmedP
   );
 
 
@@ -34,9 +38,13 @@ const submitemail = () => {
         }, (error) => {
           // An error happened.
           console.log(error)
+          var errorMessage = error.message;
+          setError(errorMessage)
         });
       }).catch(function (error) {
         // An error happened.
+        var errorMessage = error.message;
+        setError(errorMessage)
       });
     };
   
@@ -59,9 +67,13 @@ const submitemail = () => {
         }, (error) => {
           // An error happened.
           console.log(error)
+          var errorMessage = error.message;
+          setError(errorMessage)
         });
       }).catch(function (error) {
         // An error happened.
+        var errorMessage = error.message;
+        setError(errorMessage)
       });
 
 
@@ -74,9 +86,13 @@ const submitemail = () => {
         // User deleted.
       }).catch(function(error) {
         // An error happened.
+        var errorMessage = error.message;
+        setError(errorMessage)
       });
     }).catch(function (error) {
       // An error happened.
+      var errorMessage = error.message;
+      setError(errorMessage)
     });
 
     
@@ -111,6 +127,12 @@ const submitemail = () => {
         </Link>
         <br />
         <Card style={{ width: 300 }} >
+        <Input
+              placeholder={"contraseña actual"}
+              style={{ textAlign: 'center' }}
+              onChange={(e) => setConfirmP(e.target.value)}
+              size={"default"}
+          />
           <Form.Item
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
@@ -126,7 +148,7 @@ const submitemail = () => {
 
          
           <Popconfirm
-            title="Are you sure update this task?"
+            title="¿ESTAS SEGURO?"
             onConfirm={submitemail}
             onCancel={cancelE}
             okText="Yes"
@@ -149,14 +171,12 @@ const submitemail = () => {
               size={"default"}
             />
 
-          
           <Popconfirm
-            title="¿QUIERES CAMBIARLO?"
+            title="¿ESTAS SEGURO?"
             onConfirm={submitpassword}
             onCancel={cancelP}
             okText="SI"
-            cancelText="NO"
-          >
+            cancelText="NO">
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
           </Popconfirm>
           </Form.Item>
@@ -173,19 +193,20 @@ const submitemail = () => {
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
           </Popconfirm>
 
-          <br />
+
           <br />
           <Link  to="/Profile">
           <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
               PERFIL
            </Button>
           </Link>
+          <br />
 
+          {
+             error !== false ? <h1>{error}</h1> : null
+          }
 
         </Card>
-
-
-
 
       </Row>
 

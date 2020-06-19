@@ -22,7 +22,7 @@ export default function Login() {
        setError(errorMessage)
        console.log(errorMessage)
        console.log(email)
-       console.log(password )
+  
 
     
     });
