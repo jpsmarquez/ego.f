@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card ,Row} from 'antd';
+import { Button, Carousel, Radio, Col, Card, Row } from 'antd';
 import * as firebase from "firebase/app";
 import { black, blue } from "ansi-colors";
+import { callExpression } from "@babel/types";
 
 export default function Inversions(props) {
 
@@ -11,31 +12,29 @@ export default function Inversions(props) {
   const [variable, setVariable] = useState(false)
   const [arrayofdb, setArrayofdb] = useState([])
 
-
+  
 
   useEffect(() => {
     if (!variable) {
 
       ref.once("value", (snapshot) => {
         console.log(snapshot)
+
         snapshot.forEach((childSnapshot) => {
-          console.log(childSnapshot)
+          console.log(childSnapshot.key)
+
           const childData = childSnapshot.val();
           console.log(childData)
           const titulo = childData.titulo;
           const tipo = childData.tipo;
           const desc = childData.descrip;
           const campos = childData.campos;
-
-
-
+          const id = childSnapshot.key
 
           if (campos) {
             const arraydbaux = arrayofdb;
-            arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos })
+            arraydbaux.push({ titulo: titulo, tipo: tipo, desc: desc, campos: campos, id: id })
             setArrayofdb(arraydbaux)
-
-
           } else {
             console.log('test');
 
@@ -45,15 +44,18 @@ export default function Inversions(props) {
 
       });
     }
+    
   }, [])
-  
+
+
   /*option shift f (para identar)
     const inversion=(id) => {
       firebase.database().ref('inversion'+inversion.id)
 
     };
     onClick={inversion}
-*/
+  */
+ 
 
 
   return (
@@ -62,48 +64,57 @@ export default function Inversions(props) {
       display: 'flex',
       justifyContent: 'space-around'
     }}>
-       <Row>
-      <Col span={24}>
-        <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSIONES</label>
-      </Col>
-      
+      <Row>
+        <Col span={24}>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSIONES</label>
+        </Col>
 
-   
-      <Col span={24}>
-      <Link to="/Home">
-        <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
-          INICIO
+
+
+        <Col span={24}>
+          <Link to="/Home">
+            <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+              INICIO
         </Button>
-      </Link>
-      </Col>
-      {
+          </Link>
+        </Col>
+        {
 
-        arrayofdb.map((item, index) => {
+          arrayofdb.map((item, index) => {
 
-          return (
-            
-            <Card style={{ width: 150 }} key={index} >
-              {item.titulo}
-              <br />
-              {item.tipo}
-              <br />
-              {item.desc}
+            return (
 
-              {
-                item.campos.map((item, index) => {
-                  return (
-                    <p>{item}</p>
-                  )
-                })
-              }
+              <Card style={{ width: 150 }} key={index} >
+                {item.titulo}
+                <br />
+                {item.tipo}
+                <br />
+                {item.desc}
+                <br />
 
-            </Card>
-          )
-        })
-      }
+                {
+                  item.campos.map((item, index) => {
+                    return (
+                      <p>{item}</p>
+                    )
+                  })
+                }
+
+                <Link to={{
+                pathname: "/Inversion",
+                state:item
+                }}>
+                  <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey' }} >
+                    {item.id}
+                  </Button>
+                </Link>
+              </Card>
+            )
+          })
+        }
 
 
-  </Row>
+      </Row>
     </div>
   );
 };

@@ -25,9 +25,6 @@ export default function Employees(props) {
           const email = childData.email;
           const name = childData.name;
 
-
-
-
           if (tipo) {
             const arraydbaux = arrayofdb;
             arraydbaux.push({ tipo: tipo, email: email, name: name })

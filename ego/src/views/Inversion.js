@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { Button} from 'antd';
+import { Button,Card} from 'antd';
+
+
 
 export default function HomeAdmin(props) {
  
@@ -14,6 +16,9 @@ export default function HomeAdmin(props) {
         </Button>
         </Link>
 
+        <Card style={{ width: 150 }} >
+        
+        </Card>
         </div>   
     );
 };

@@ -1,62 +1,79 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card, Row, Input, Form } from 'antd';
+import { Button, Carousel, Radio, Col, Card, Row, Input, Form, Popconfirm, message } from 'antd';
 import * as firebase from "firebase/app";
 
 
 export default function Employees(props) {
 
   let user = firebase.auth().currentUser
-  let [newemail, setEmail]=useState('');
-  let [newpassword, setPassword]=useState('');
+  let [newemail, setEmail] = useState('');
+  let [newpassword, setPassword] = useState('');
+  console.log(user.password)
   let credential = firebase.auth.EmailAuthProvider.credential(
-    user.email, 
-    '123456'
-);
+    user.email,
+    'enriquego'
+  );
 
 
-// Prompt the user to re-provide their sign-in credentials
+  // Prompt the user to re-provide their sign-in credentials
+
+const submitemail = () => {
 
 
+      console.log(newemail)
+      console.log(user.email)
+      console.log(user.password)
+
+      user.reauthenticateWithCredential(credential).then(function () {
+        // User re-authenticated.
+        user.updateEmail(newemail).then(() => {
+          // Update successful.
+          console.log('success')
+          message.success('CORREO CAMBIADO');
+        }, (error) => {
+          // An error happened.
+          console.log(error)
+        });
+      }).catch(function (error) {
+        // An error happened.
+      });
+    };
+  
+
+
+
+  function cancelE(e) {
+    console.log(e);
+    message.error('NO SE EFECTUO CAMBIOS');
+  }
 
   const submitpassword = () => {
 
-    user.updatePassword(newpassword).then(() => {
-      // Update successful.
-      console.log('success')
-      console.log(newpassword)
-    }, (error) => {
-      // An error happened.
-      console.log(error)
-    });
+      user.reauthenticateWithCredential(credential).then(function () {
+        // User re-authenticated.
+        user.updatePassword(newpassword).then(() => {
+          // Update successful.
+          console.log('success')
+          message.success('CONTRASEÑA CAMBIADA');
+        }, (error) => {
+          // An error happened.
+          console.log(error)
+        });
+      }).catch(function (error) {
+        // An error happened.
+      });
+
+
+    };
    
 
 
-  };
+  function cancelP(e) {
+    console.log(e);
+    message.error('NO SE EFECTUO CAMBIOS');
+  }
 
-  const submitemail = () => {
-
-    
-    console.log(newemail)
-    console.log(user.email)
-    console.log(user.password)
-
-    user.reauthenticateWithCredential(credential).then(function() {
-      // User re-authenticated.
-      user.updateEmail(newemail).then(() => {
-        // Update successful.
-        console.log('success')
-         }, (error) => {
-        // An error happened.
-        console.log(error)
-        });
-    }).catch(function(error) {
-      // An error happened.
-    });
-
-  
-
-  };
 
 
 
@@ -89,9 +106,18 @@ export default function Employees(props) {
               size={"default"}
             />
 
+         
+          <Popconfirm
+            title="Are you sure update this task?"
+            onConfirm={submitemail}
+            onCancel={cancelE}
+            okText="Yes"
+            cancelText="No"
+          >
+           <Button  type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
+          </Popconfirm>
           </Form.Item>
 
-          <Button onClick={submitemail }type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
           <br />
           <Form.Item
             labelCol={{ span: 24 }}
@@ -105,8 +131,18 @@ export default function Employees(props) {
               size={"default"}
             />
 
+          
+          <Popconfirm
+            title="¿QUIERES CAMBIARLO?"
+            onConfirm={submitpassword}
+            onCancel={cancelP}
+            okText="SI"
+            cancelText="NO"
+          >
+            <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
+          </Popconfirm>
           </Form.Item>
-          <Button onClick={submitpassword}type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
+
           <br />
         </Card>
 
