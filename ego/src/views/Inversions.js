@@ -101,8 +101,8 @@ export default function Inversions(props) {
                 }
 
                 <Link to={{
-                pathname: "/Inversion",
-                state:item
+                pathname: "/Inversion"
+                
                 }}>
                   <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey' }} >
                     {item.id}

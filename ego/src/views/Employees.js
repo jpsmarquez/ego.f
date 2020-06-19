@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card ,Row} from 'antd';
+import { Button , Form, Input,Card,Row,Col}from 'antd';
 import * as firebase from "firebase/app";
 
 
@@ -8,39 +8,35 @@ export default function Employees(props) {
 
 
   var ref = firebase.database().ref("/usuario");
-  const [variable, setVariable] = useState(false)
-  const [arrayofdb, setArrayofdb] = useState([])
+  const [email, setEmail]=useState('');
+  const [password, setPassword]=useState('');
+  const [tipo,setType] = useState('');
+  const [nombre,setN] = useState('');
+  const [error, setError]=useState('');
+  const [UsuarioCreado,setUsuarioCreado]=useState('');
 
 
-  useEffect(() => {
-    if (!variable) {
 
-      ref.once("value", (snapshot) => {
-        console.log(snapshot)
-        snapshot.forEach((childSnapshot) => {
-          console.log(childSnapshot)
-          const childData = childSnapshot.val();
-          console.log(childData)
-          const tipo = childData.tipo;
-          const email = childData.email;
-          const name = childData.name;
+  const submit =()=>{
+    
 
-          if (tipo) {
-            const arraydbaux = arrayofdb;
-            arraydbaux.push({ tipo: tipo, email: email, name: name })
-            setArrayofdb(arraydbaux)
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+      // Update successful.
+      console.log('success')
 
-
-          } else {
-            console.log('test');
-
-          }
-        });
-        setVariable(true)
-
-      });
-    }
-  }, [])
+      setUsuarioCreado("USUARIO CREADO")
+      
+      
+       }, (error) => {
+        var errorMessage = error.message;
+        setError(errorMessage);
+      // An error happened.
+      console.log(error)
+      }).catch(function(error) {
+ 
+      
+     })  
+  };
 
   return (
 
@@ -50,42 +46,49 @@ export default function Employees(props) {
     }}>
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>EMPLEADOS</label>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>EMPLEADO</label>
         </Col>
+        <Form style={{textAlign:'center',flex:'auto'}} >
+              <Form.Item
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}>
 
-        <Link to="/Home">
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
-        </Link>
+                <Input type={'email'}
+                placeholder={"correo"}
+                style={{textAlign:'center'}}
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  size={"default"}
+                />
+              </Form.Item>
 
-
-
-        {
-
-          arrayofdb.map((item, index) => {
-            console.log(index)
-            return (
-
-
-
-              <Card style={{ width: 300 }} key={index}>
-                {item.name}
-                <br />
-                {item.email}
-                <br />
-                <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
-                <br />
-                <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
-                <br />
-
-
-
-              </Card>
-            )
-          })
-        }
+              <Form.Item
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}>
+                <Input 
+                placeholder={"contraseña"}
+                style={{textAlign:'center'}}
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  size={"default"} />
+              </Form.Item>
 
 
-
+              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
+                REGISTRAR
+              </Button>
+              
+              {
+              UsuarioCreado ? <h1>{UsuarioCreado} </h1> : <h1>{error} </h1>
+              }
+              
+              
+              <Link  to="/Home">
+             <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+              INICIO
+             </Button>
+              </Link>
+         </Form>
 
       </Row>
     </div>

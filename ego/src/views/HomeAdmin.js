@@ -28,7 +28,7 @@ export default function HomeAdmin(props) {
 
         <Link  to="/Employees">
         <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              EMPLEADOS
+              CREAR EMPLEADO
         </Button>
         </Link>
 

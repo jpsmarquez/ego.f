@@ -12,7 +12,7 @@ export default function Employees(props) {
   console.log(user.password)
   let credential = firebase.auth.EmailAuthProvider.credential(
     user.email,
-    'enriquego'
+    '123456'
   );
 
 
@@ -65,7 +65,22 @@ const submitemail = () => {
       });
 
 
-    };
+  };
+
+  const deleteacc = () => {
+    user.reauthenticateWithCredential(credential).then(function () {
+      // User re-authenticated.
+      user.delete().then(function() {
+        // User deleted.
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }).catch(function (error) {
+      // An error happened.
+    });
+
+    
+  };
    
 
 
@@ -74,7 +89,10 @@ const submitemail = () => {
     message.error('NO SE EFECTUO CAMBIOS');
   }
 
-
+  function cancelA(e) {
+    console.log(e);
+    message.error('NO SE EFECTUO CAMBIOS');
+  }
 
 
   return (
@@ -144,6 +162,26 @@ const submitemail = () => {
           </Form.Item>
 
           <br />
+          
+          <Popconfirm
+            title="¿SEGURO QUE QUIERES BORRAR?"
+            onConfirm={deleteacc}
+            onCancel={cancelA}
+            okText="SI"
+            cancelText="NO"
+          >
+            <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
+          </Popconfirm>
+
+          <br />
+          <br />
+          <Link  to="/Profile">
+          <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+              PERFIL
+           </Button>
+          </Link>
+
+
         </Card>
 
 
