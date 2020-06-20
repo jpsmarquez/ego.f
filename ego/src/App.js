@@ -59,7 +59,7 @@ export default function App() {
             
         :<Login {...props}/> )} />
 
-        <Route exact path="/Inversion"render={(props)=>(logged?
+        <Route exact path="/Inversion/:id"render={(props)=>(logged?
           
             <Inversion {...props}  logout={logout} />
             

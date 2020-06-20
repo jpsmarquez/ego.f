@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { Button, Carousel, Radio, Col, Card, Row } from 'antd';
+import { Link, Redirect} from "react-router-dom";
+import { Button, Col, Card, Row } from 'antd';
 import * as firebase from "firebase/app";
-import { black, blue } from "ansi-colors";
-import { callExpression } from "@babel/types";
+
 
 export default function Inversions(props) {
-
 
   var ref = firebase.database().ref("/inversion");
   const [variable, setVariable] = useState(false)
   const [arrayofdb, setArrayofdb] = useState([])
 
   
-
   useEffect(() => {
     if (!variable) {
 
@@ -47,17 +44,9 @@ export default function Inversions(props) {
     
   }, [])
 
-
   /*option shift f (para identar)
-    const inversion=(id) => {
-      firebase.database().ref('inversion'+inversion.id)
-
-    };
-    onClick={inversion}
   */
  
-
-
   return (
 
     <div style={{
@@ -78,13 +67,16 @@ export default function Inversions(props) {
         </Button>
           </Link>
         </Col>
+
         {
 
           arrayofdb.map((item, index) => {
 
-            return (
 
+            return (
+             
               <Card style={{ width: 150 }} key={index} >
+                
                 {item.titulo}
                 <br />
                 {item.tipo}
@@ -99,16 +91,18 @@ export default function Inversions(props) {
                     )
                   })
                 }
-
+            
                 <Link to={{
-                pathname: "/Inversion"
-                
-                }}>
+                  pathname: `/Inversion/${item.id}`,
+
+                  }}>
                   <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey' }} >
                     {item.id}
                   </Button>
                 </Link>
+
               </Card>
+              
             )
           })
         }
@@ -118,6 +112,20 @@ export default function Inversions(props) {
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -226,4 +234,24 @@ renderChoices() {
         )
       })
     }
+
+
+class Inversions extends React.Component {
+  constructor(props) {
+      
+  }
+
+  render() {
+      return (
+
+          <div>
+             <div>{this.state.data}</div>
+             <Two value={this.state.data} />
+          </div>
+      );
+  }
+}
+
+
+
 */

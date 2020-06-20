@@ -127,16 +127,22 @@ const submitemail = () => {
         </Link>
         <br />
         <Card style={{ width: 300 }} >
-        <Input
-              placeholder={"contraseña actual"}
-              style={{ textAlign: 'center' }}
-              onChange={(e) => setConfirmP(e.target.value)}
-              size={"default"}
-          />
+
+        <p>INGRESA TU CONTRASEÑA ACTUAL ANTES DE EFECTUAR ALGUN CAMBIO</p>
+        <Input.Password 
+        placeholder={"contraseña actual"}
+        style={{ textAlign: 'center' }}
+        onChange={(e) => setConfirmP(e.target.value)}
+        size={"default"}
+        
+        
+        />
+        <br />
+
           <Form.Item
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
-
+<br />
             <Input
               type="email"
               placeholder={"correo"}
@@ -163,13 +169,16 @@ const submitemail = () => {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
 
-            <Input
-              placeholder={"contraseña"}
-              style={{ textAlign: 'center' }}
-              onChange={(e) => setPassword(e.target.value)}
-              value={newpassword}
-              size={"default"}
-            />
+
+
+          <Input.Password
+           placeholder={"nueva contraseña"}
+           style={{ textAlign: 'center' }}
+           onChange={(e) => setPassword(e.target.value)}
+           value={newpassword}
+           size={"default"}
+           
+           />
 
           <Popconfirm
             title="¿ESTAS SEGURO?"
@@ -194,12 +203,7 @@ const submitemail = () => {
           </Popconfirm>
 
 
-          <br />
-          <Link  to="/Profile">
-          <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              PERFIL
-           </Button>
-          </Link>
+          
           <br />
 
           {
