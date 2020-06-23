@@ -4,7 +4,6 @@ import { Form, Input,Col, Row, } from 'antd';
 
 
 export default function FormasDeCampo({llenarcampos}) {
-
     const { TextArea } = Input;
     
     return (
@@ -14,8 +13,8 @@ export default function FormasDeCampo({llenarcampos}) {
         rows={4}
         onChange={(e) => 
         llenarcampos(e.target.value)} 
-        placeholder={"CONTENIDO DE CAMPO"} />
-
+        placeholder={"CAMPO"} />
+        
         </Col>
     )
 }

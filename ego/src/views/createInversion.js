@@ -76,7 +76,8 @@ export default function NewInversion(props) {
                   style={{ textAlign: 'center' }}
                   onChange={(e) => setT(e.target.value)}
                   value={titulo}
-                  size={"default"}
+                  size={"default"} 
+                  
                 />
               </Form.Item>
             </Col>
@@ -124,18 +125,10 @@ export default function NewInversion(props) {
       </Col>
 
       <Col span={24}>
-
         <div style={{
           display: 'flex',
           justifyContent: 'space-around'
         }}>
-          <Button type="primary" onClick={addform} style={{ backgroundColor: 'grey' }}>
-            +
-          </Button>
-
-          <Button type="primary" onClick={deletelastelement} style={{ backgroundColor: 'grey' }}>
-            -
-          </Button>
 
           <Link to="/Inversions">
             <Button type="primary" onClick={submit} style={{ backgroundColor: 'grey' }}>
@@ -146,7 +139,7 @@ export default function NewInversion(props) {
           <Link to="/Home">
             <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
               INICIO
-        </Button>
+             </Button>
           </Link>
         </div>
 
@@ -155,8 +148,21 @@ export default function NewInversion(props) {
 
   )
 }
-//arreglar nav bar
-//styles components
+
+/*
+          <Button type="primary" onClick={addform} style={{ backgroundColor: 'grey' }}>
+            +
+          </Button>
+
+          <Button type="primary" onClick={deletelastelement} style={{ backgroundColor: 'grey' }}>
+            -
+          </Button>
+
+          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+              SUBIR IMAGEN
+          </Button>
+
+*/
 
 /*
 import React,{useState} from "react";

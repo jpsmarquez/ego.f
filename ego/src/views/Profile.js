@@ -134,15 +134,13 @@ const submitemail = () => {
         style={{ textAlign: 'center' }}
         onChange={(e) => setConfirmP(e.target.value)}
         size={"default"}
-        
-        
         />
         <br />
 
           <Form.Item
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
-<br />
+
             <Input
               type="email"
               placeholder={"correo"}
@@ -169,7 +167,14 @@ const submitemail = () => {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
 
-
+<Input.Password 
+        placeholder={"contraseña actual"}
+        style={{ textAlign: 'center' }}
+        onChange={(e) => setConfirmP(e.target.value)}
+        size={"default"}
+        
+        
+        />
 
           <Input.Password
            placeholder={"nueva contraseña"}
@@ -191,7 +196,14 @@ const submitemail = () => {
           </Form.Item>
 
           <br />
-          
+          <Input.Password 
+        placeholder={"contraseña actual"}
+        style={{ textAlign: 'center' }}
+        onChange={(e) => setConfirmP(e.target.value)}
+        size={"default"}
+        
+        
+        />
           <Popconfirm
             title="¿SEGURO QUE QUIERES BORRAR?"
             onConfirm={deleteacc}
