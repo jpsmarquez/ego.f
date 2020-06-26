@@ -115,25 +115,33 @@ const submitemail = () => {
 
     <div style={{
       display: 'flex',
-      justifyContent: 'space-around',
+     
+      textAlign: 'center' ,
+      justifyContent: 'center',
+      
     }}>
       <Row>
         <Col span={24}>
           <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>PERFIL</label>
         </Col>
         <br />
-        <Link to="/Home">
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >INICIO</Button>
-        </Link>
-        <br />
-        <Card style={{ width: 300 }} >
 
+        <Col span={24}>
+        <Link to="/Home">
+          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >INICIO</Button>
+        </Link>
+        </Col>
+
+        <br />
+     
+        <Card type="flex" style={{ width: 300,textAlign: 'center'}}>
         <p>INGRESA TU CONTRASEÑA ACTUAL ANTES DE EFECTUAR ALGUN CAMBIO</p>
-        <Input.Password 
+        <Input
         placeholder={"contraseña actual"}
-        style={{ textAlign: 'center' }}
+
         onChange={(e) => setConfirmP(e.target.value)}
         size={"default"}
+        style={{ textAlign: 'center' }}
         />
         <br />
 
@@ -167,16 +175,14 @@ const submitemail = () => {
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
 
-<Input.Password 
+       <Input
         placeholder={"contraseña actual"}
         style={{ textAlign: 'center' }}
         onChange={(e) => setConfirmP(e.target.value)}
         size={"default"}
-        
-        
         />
 
-          <Input.Password
+          <Input
            placeholder={"nueva contraseña"}
            style={{ textAlign: 'center' }}
            onChange={(e) => setPassword(e.target.value)}
@@ -196,7 +202,7 @@ const submitemail = () => {
           </Form.Item>
 
           <br />
-          <Input.Password 
+          <Input
         placeholder={"contraseña actual"}
         style={{ textAlign: 'center' }}
         onChange={(e) => setConfirmP(e.target.value)}
@@ -213,9 +219,6 @@ const submitemail = () => {
           >
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
           </Popconfirm>
-
-
-          
           <br />
 
           {
@@ -225,9 +228,6 @@ const submitemail = () => {
         </Card>
 
       </Row>
-
-
-
     </div>
   );
 };

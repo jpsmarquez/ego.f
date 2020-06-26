@@ -51,7 +51,8 @@ export default function Inversions(props) {
 
     <div style={{
       display: 'flex',
-      justifyContent: 'space-around'
+      justifyContent: 'space-around',
+      textAlign: 'center' 
     }}>
       <Row>
         <Col span={24}>
@@ -62,8 +63,7 @@ export default function Inversions(props) {
         <Col span={24}>
           <Link to="/Home">
             <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
-              INICIO
-        </Button>
+              INICIO</Button>
           </Link>
         </Col>
 
@@ -74,7 +74,7 @@ export default function Inversions(props) {
 
             return (
              
-              <Card style={{ width: 150 }} key={index} >
+              <Card   justifyContent={'center'} style={{ width: 150,textAlign: 'center'  }} key={index} >
                 
                 {item.titulo}
                 <br />
@@ -90,9 +90,8 @@ export default function Inversions(props) {
                   pathname: `/Inversion/${item.id}`,
 
                   }}>
-                  <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey' }} >
-                    *
-                  </Button>
+                  <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >
+                    EDITAR</Button>
                 </Link>
 
               </Card>

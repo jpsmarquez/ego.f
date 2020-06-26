@@ -2,32 +2,32 @@ import React, { useState, useEffect } from "react";
 import { Link, Redirect} from "react-router-dom";
 import { Button, Col, Card, Row, Popconfirm, message,Input } from 'antd';
 import * as firebase from "firebase/app";
-import Formasdecampo from '../containers/formasdecampo';
 
 export default function Inversion(props) {
   console.log(props)
   var ref = firebase.database().ref(`/inversion/${props.match.params.id}`);
   console.log(ref)
 
-  const [arrayofdb, setArrayofdb] = useState('')
+  const [arrayofdb, setArrayofdb] = useState({})
+
   const [index, setIndex] = useState(0);
   const [campos, setC] = useState('');
   const [ndesc, setnD] = useState('');
   const [ntitulo, setnT] = useState('');
- 
+
 
   useEffect(() => {
     ref.once("value", (snapshot) => {
       console.log(snapshot.val())
       const childData = snapshot.val();
       setArrayofdb(childData)
+      console.log(childData)
     });
-  }, []);
+}, []);
 
   const deleteI =()=> {
     ref.remove();
     message.success('INVERSION ELIMINADA');
-
   };
 
   function cancelD(e) {
@@ -67,7 +67,7 @@ export default function Inversion(props) {
   }
 
   const updateC = () => {
-    firebase.database().ref(`/inversion/${props.match.params.id}/campos`).set(campos)
+    firebase.database().ref(`/inversion/${props.match.params.id}/campos`).set(arrayofdb.campos)
     message.success('CAMPO EDITADO');
   };
 
@@ -76,6 +76,14 @@ export default function Inversion(props) {
     message.error('NO SE EFECTUO CAMBIOS');
   }
 
+  function updateinput(e){
+
+    setArrayofdb(
+      {...arrayofdb,
+      
+         campos: e.target.value
+      })
+  }
 
   return (
 
@@ -142,16 +150,14 @@ export default function Inversion(props) {
             cancelText="NO">
              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR DESCRIPCION</Button>
           </Popconfirm>
-
           <br/>
 
           <br/>
           <Input.TextArea
                   style={{textAlign: 'center' }}
                   value={`${arrayofdb.campos}`}
-                  onChange={(e) => setC(e.target.value)}
+                  onChange={(e) => updateinput(e)}
                   autoSize true
-
           />
 
           <Popconfirm
@@ -162,6 +168,7 @@ export default function Inversion(props) {
             cancelText="NO">
             <Button type="primary" size={"small"}  style={{ backgroundColor: 'grey' }}>EDITAR CAMPO </Button>
           </Popconfirm>
+
           <br/>
           <br/>
           <Popconfirm

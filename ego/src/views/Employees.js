@@ -42,13 +42,15 @@ export default function Employees(props) {
 
     <div style={{
       display: 'flex',
-      justifyContent: 'space-around'
+      justifyContent: 'center',
+      textAlign: 'center' 
     }}>
+      
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>EMPLEADO</label>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'white',textAlign: 'center'  }}>EMPLEADO</label>
         </Col>
-        <Form style={{textAlign:'center',flex:'auto'}} >
+        <Form style={{textAlign:'center',flex:'auto',justifyContent: 'center'}} >
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}>
