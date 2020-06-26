@@ -146,12 +146,13 @@ export default function Inversion(props) {
           <br/>
 
           <br/>
-          <Input
-                placeholder={`${arrayofdb.campos} `}
+          <Input.TextArea
                   style={{textAlign: 'center' }}
-                  size={"default"}
+                  value={`${arrayofdb.campos}`}
                   onChange={(e) => setC(e.target.value)}
-         />
+                  autoSize true
+
+          />
 
           <Popconfirm
             title="¿ESTAS SEGURO?"
