@@ -71,16 +71,13 @@ export default function Inversion(props) {
     message.success('CAMPO EDITADO');
   };
 
-
   function cancelc() {
     message.error('NO SE EFECTUO CAMBIOS');
   }
 
   function updateinput(e){
-
     setArrayofdb(
       {...arrayofdb,
-      
          campos: e.target.value
       })
   }
@@ -88,29 +85,36 @@ export default function Inversion(props) {
   return (
 
     <div style={{
+
       display: 'flex',
-      justifyContent: 'space-around'
+      textAlign: 'center' ,
+      justifyContent: 'center',
+      
     }}>
-      <Row>
+      <Row >
         <Col span={24}>
           <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSION</label>
-        </Col>
+
         <br />
+
         <Link to="/Home">
           <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
             INICIO
         </Button>
         </Link>
+        
         <br />
+        <br />
+
         <Link to="/Inversions">
           <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
             INVERSIONES
         </Button>
         </Link>
-
+        <br />
         <br />
 
-        <Card style={{ width: 500, height: 500 }} >
+       
 
           <br />
           <Input
@@ -121,7 +125,7 @@ export default function Inversion(props) {
                   size={"default"}
           />
           <br />
-
+          <br />
           <Popconfirm
             title="¿ESTAS SEGURO?"
             onConfirm={updateT}
@@ -130,9 +134,8 @@ export default function Inversion(props) {
             cancelText="NO">
              <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR TITULO</Button>
           </Popconfirm>
-         
-          <br />
 
+          <br />
           <br />
           <Input
                   placeholder={`${arrayofdb.descrip} `}
@@ -141,6 +144,7 @@ export default function Inversion(props) {
                   value={ndesc}
                   size={"default"}
           />
+          <br />
           <br />
           <Popconfirm
             title="¿ESTAS SEGURO?"
@@ -158,8 +162,10 @@ export default function Inversion(props) {
                   value={`${arrayofdb.campos}`}
                   onChange={(e) => updateinput(e)}
                   autoSize true
+                  
           />
-
+<br/>
+<br/>
           <Popconfirm
             title="¿ESTAS SEGURO?"
             onConfirm={updateC}
@@ -180,7 +186,9 @@ export default function Inversion(props) {
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR INVERSION</Button>
 
           </Popconfirm>
-        </Card>
+          <br/>
+          <br/>
+        </Col>
       </Row>
     </div>
   );

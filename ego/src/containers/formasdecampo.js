@@ -13,7 +13,9 @@ export default function FormasDeCampo({llenarcampos}) {
         rows={4}
         onChange={(e) => 
         llenarcampos(e.target.value)} 
-        placeholder={"CAMPO"} />
+        placeholder={"CAMPO"} 
+        autoSize true
+        />
         
         </Col>
     )

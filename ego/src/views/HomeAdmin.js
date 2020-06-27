@@ -1,15 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import { tsPropertySignature } from "@babel/types";
-import { Button} from 'antd';
+import { Button, Card} from 'antd';
 
 export default function HomeAdmin(props) {
     return (
       <div style={{display:'flex', 
-      justifyContent: 'space-around'
-      
-      }}>
+      justifyContent: 'space-around'}}
+>
 
+      <Card   style={{ width:360, textAlign: 'center'  }}  >
         <Button onClick={props.logout} type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
               SALIR
         </Button>
@@ -37,7 +37,7 @@ export default function HomeAdmin(props) {
               PERFIL
         </Button>
         </Link>
-
+      </Card>
         </div>   
     );
 };

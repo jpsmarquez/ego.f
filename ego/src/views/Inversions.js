@@ -48,7 +48,6 @@ export default function Inversions(props) {
   */
  
   return (
-
     <div style={{
       display: 'flex',
       justifyContent: 'space-around',
@@ -58,15 +57,17 @@ export default function Inversions(props) {
         <Col span={24}>
           <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSIONES</label>
         </Col>
-
-
         <Col span={24}>
           <Link to="/Home">
             <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
               INICIO</Button>
           </Link>
         </Col>
+        <br />
 
+       
+
+        <br />
         {
 
           arrayofdb.map((item, index) => {
@@ -74,7 +75,7 @@ export default function Inversions(props) {
 
             return (
              
-              <Card   justifyContent={'center'} style={{ width: 150,textAlign: 'center'  }} key={index} >
+              <Card  autoSize true justifyContent={'center'} style={{ width:360, textAlign: 'center'  }} key={index} >
                 
                 {item.titulo}
                 <br />
@@ -89,7 +90,8 @@ export default function Inversions(props) {
                 <Link to={{
                   pathname: `/Inversion/${item.id}`,
 
-                  }}>
+                }}>
+                <br />
                   <Button  type="primary" size='small' shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >
                     EDITAR</Button>
                 </Link>

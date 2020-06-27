@@ -49,8 +49,6 @@ const submitemail = () => {
     };
   
 
-
-
   function cancelE(e) {
     console.log(e);
     message.error('NO SE EFECTUO CAMBIOS');
@@ -115,34 +113,30 @@ const submitemail = () => {
 
     <div style={{
       display: 'flex',
-     
       textAlign: 'center' ,
-      justifyContent: 'center',
-      
+      justifyContent: 'center'
     }}>
       <Row>
         <Col span={24}>
           <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>PERFIL</label>
-        </Col>
+        
         <br />
 
-        <Col span={24}>
+        
         <Link to="/Home">
           <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >INICIO</Button>
         </Link>
-        </Col>
-
+       
         <br />
-     
-        <Card type="flex" style={{ width: 300,textAlign: 'center'}}>
+        <br />
+      
+        <Card type="flex" style={{ width: 300,textAlign: 'center', alignItems:'center'}}>
         <p>INGRESA TU CONTRASEÑA ACTUAL ANTES DE EFECTUAR ALGUN CAMBIO</p>
         <Input
         placeholder={"contraseña actual"}
-
         onChange={(e) => setConfirmP(e.target.value)}
         size={"default"}
-        style={{ textAlign: 'center' }}
-        />
+        style={{ textAlign: 'center' }}/>
         <br />
 
           <Form.Item
@@ -158,7 +152,6 @@ const submitemail = () => {
               size={"default"}
             />
 
-         
           <Popconfirm
             title="¿ESTAS SEGURO?"
             onConfirm={submitemail}
@@ -226,7 +219,7 @@ const submitemail = () => {
           }
 
         </Card>
-
+        </Col>
       </Row>
     </div>
   );
