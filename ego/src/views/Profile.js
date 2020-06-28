@@ -118,7 +118,7 @@ const submitemail = () => {
     }}>
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>PERFIL</label>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'grey' }}>PERFIL</label>
         
         <br />
 
@@ -130,7 +130,7 @@ const submitemail = () => {
         <br />
         <br />
       
-        <Card type="flex" style={{ width: 300,textAlign: 'center', alignItems:'center'}}>
+        <Card type="flex" style={{ width: 300,textAlign: 'center', alignItems:'center', borderColor:'grey', borderWidth:10}}>
         <p>INGRESA TU CONTRASEÑA ACTUAL ANTES DE EFECTUAR ALGUN CAMBIO</p>
         <Input
         placeholder={"contraseña actual"}
@@ -159,11 +159,14 @@ const submitemail = () => {
             okText="Yes"
             cancelText="No"
           >
+            <br />
+            <br />
            <Button  type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
+
           </Popconfirm>
           </Form.Item>
 
-          <br />
+          
           <Form.Item
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}>
@@ -190,6 +193,8 @@ const submitemail = () => {
             onCancel={cancelP}
             okText="SI"
             cancelText="NO">
+               <br />
+            <br />
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
           </Popconfirm>
           </Form.Item>
@@ -210,6 +215,8 @@ const submitemail = () => {
             okText="SI"
             cancelText="NO"
           >
+             <br />
+            <br />
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
           </Popconfirm>
           <br />

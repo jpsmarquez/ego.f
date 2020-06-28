@@ -7,10 +7,15 @@
   pointer-events: none;
 }
 
-@media (max-width: 600px) {
+.buttonone{
+  color: red;
+}
+/* =Responsive Structure
+----------------------------------------------- */
+@media (orientation:portrait) {
+       /* Smaller Resolution Desktops and Laptops */
 
 }
-
 
 .App-header {
   background-color: #282c34;

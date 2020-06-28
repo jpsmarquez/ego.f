@@ -48,7 +48,7 @@ export default function Employees(props) {
       
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white',textAlign: 'center'  }}>EMPLEADO</label>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'grey' ,textAlign: 'center'  }}>NUEVO EMPLEADO</label>
         </Col>
         <Form style={{textAlign:'center',flex:'auto',justifyContent: 'center'}} >
               <Form.Item

@@ -1,43 +1,69 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import { tsPropertySignature } from "@babel/types";
-import { Button, Card} from 'antd';
+import { Link } from "react-router-dom";
+import { Button, Row, Col, Card } from 'antd';
 
 export default function HomeAdmin(props) {
-    return (
-      <div style={{display:'flex', 
-      justifyContent: 'space-around'}}
->
+      return (
+            <div
+                  style={{
+                        display: 'flex',
+                        textAlign: 'center',
+                        justifyContent: 'center'
+                  }}>
+                  <Row>
+                        <Col span={30}>
 
-      <Card   style={{ width:360, textAlign: 'center'  }}  >
-        <Button onClick={props.logout} type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              SALIR
-        </Button>
+                              <br />
+                              <br />
+                              <br />
+                                    <Link to="/Employees">
+                                          <Button type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' , fontSize:50}}  >
+                                                CREAR EMPLEADO
+                                          </Button>
+                                    </Link>
+                    
 
-        <Link  to="/NewInversion">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
-              NUEVA INVERSION
-        </Button>
-        </Link>
-        
-        <Link  to="/Inversions">
-        <Button type="primary" shape="rectangle"style={{backgroundColor:'grey'}} >
-              INVERSIONES
-        </Button>
-        </Link>
+                              <br />
+                              <br />
+                              <br />
+            
+                                    <Link to="/NewInversion">
+                                          <Button className="buttonone" type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' ,fontSize:50}}>
+                                                NUEVA INVERSION
+                                            </Button>
+                                    </Link>
 
-        <Link  to="/Employees">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              CREAR EMPLEADO
-        </Button>
-        </Link>
+                                    <br />
 
-        <Link  to="/Profile">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
-              PERFIL
-        </Button>
-        </Link>
-      </Card>
-        </div>   
-    );
+                              <br />
+                              <br />
+       
+                                    <Link to="/Inversions">
+                                          <Button type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey',fontSize:50 }} >
+                                                INVERSIONES
+                                            </Button>
+                                    </Link>
+                                    <br />
+                              <br />
+                              <br />
+                 
+                                    <Link to="/Profile">
+                                          <Button type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' ,fontSize:50}} >
+                                                PERFIL
+                                          </Button>
+
+                                    </Link>
+                                    <br />
+                              <br />
+                              <br />
+ 
+                                    <Button onClick={props.logout} size='100px' type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey',fontSize:50 }}>
+                                          SALIR
+                                     </Button>
+                      
+
+                        </Col>
+                  </Row>
+            </div>
+      );
 };

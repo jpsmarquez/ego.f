@@ -60,7 +60,7 @@ export default function NewInversion(props) {
   return (
     <Row>
       <Col span={24}>
-        <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>NUEVA INVERSION</label>
+        <label style={{ textAlign: 'center', fontSize: 100, color: 'grey'  }}>NUEVA INVERSION</label>
       </Col>
 
       <Col span={24}>
@@ -123,7 +123,8 @@ export default function NewInversion(props) {
           </Row>
         </Form>
       </Col>
-
+      <br />
+      <br />
       <Col span={24}>
         <div style={{
           display: 'flex',
@@ -135,7 +136,7 @@ export default function NewInversion(props) {
               GUARDAR
           </Button>
           </Link>
-
+          <br />
           <Link to="/Home">
             <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
               INICIO

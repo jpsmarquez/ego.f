@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect} from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
 import { Button, Col, Card, Row, Popconfirm, message,Input } from 'antd';
 import * as firebase from "firebase/app";
 
-export default function Inversion(props) {
+export default withRouter( function Inversion(props) {
+
   console.log(props)
   var ref = firebase.database().ref(`/inversion/${props.match.params.id}`);
   console.log(ref)
 
   const [arrayofdb, setArrayofdb] = useState({})
-
   const [index, setIndex] = useState(0);
   const [campos, setC] = useState('');
   const [ndesc, setnD] = useState('');
@@ -28,6 +28,7 @@ export default function Inversion(props) {
   const deleteI =()=> {
     ref.remove();
     message.success('INVERSION ELIMINADA');
+    props.history.push('/Inversions')
   };
 
   function cancelD(e) {
@@ -184,7 +185,6 @@ export default function Inversion(props) {
             okText="SI"
             cancelText="NO">
             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR INVERSION</Button>
-
           </Popconfirm>
           <br/>
           <br/>
@@ -192,7 +192,7 @@ export default function Inversion(props) {
       </Row>
     </div>
   );
-};
+});
 
 /*
   const submit = (campo2e) => {

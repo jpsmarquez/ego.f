@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Redirect} from "react-router-dom";
 import { Button, Col, Card, Row, Input } from 'antd';
 import * as firebase from "firebase/app";
+import { AudioOutlined } from '@ant-design/icons';
 
 
 export default function Inversions(props) {
@@ -55,7 +56,7 @@ export default function Inversions(props) {
     }}>
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSIONES</label>
+          <label style={{ textAlign: 'center', fontSize: 100,color: 'grey'  }}>INVERSIONES</label>
         </Col>
         <Col span={24}>
           <Link to="/Home">
@@ -63,6 +64,8 @@ export default function Inversions(props) {
               INICIO</Button>
           </Link>
         </Col>
+
+
         <br />
 
        
