@@ -94,7 +94,7 @@ export default withRouter( function Inversion(props) {
     }}>
       <Row >
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'white' }}>INVERSION</label>
+          <label className="titles" style={{ textAlign: 'center', fontSize: 100, color: 'grey' }}>INVERSION</label>
 
         <br />
 

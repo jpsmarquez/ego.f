@@ -18,6 +18,7 @@ import NewInversion from './views/createInversion';
 import Register from './views/register';
 
 
+
 export default function App() {
   const [logged, setlogged]=useState(null)
   

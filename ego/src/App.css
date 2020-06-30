@@ -7,13 +7,40 @@
   pointer-events: none;
 }
 
-.buttonone{
-  color: red;
-}
+
+
+
+
+
 /* =Responsive Structure
 ----------------------------------------------- */
-@media (orientation:portrait) {
+@media (max-width: 812px) {
        /* Smaller Resolution Desktops and Laptops */
+
+   
+}
+
+@media only screen and (max-width: 812px) and (orientation: portrait) {
+  /* portrait phones */
+
+
+  .buttonss{
+    width:250px !important;
+   height:50px !important;
+   font-size: 20px !important;
+   overflow: hidden;
+   }
+
+   .titles{
+    font-size: 60px !important;
+  }
+
+  .mtitles{
+    font-size: 50px !important;
+  }
+  .invscampos{
+    width:380px !important;
+  }
 
 }
 

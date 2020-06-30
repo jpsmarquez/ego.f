@@ -60,7 +60,7 @@ export default function NewInversion(props) {
   return (
     <Row>
       <Col span={24}>
-        <label style={{ textAlign: 'center', fontSize: 100, color: 'grey'  }}>NUEVA INVERSION</label>
+        <label className="titles" style={{ textAlign: 'center', fontSize: 100, color: 'grey'  }}>NUEVA INVERSION</label>
       </Col>
 
       <Col span={24}>

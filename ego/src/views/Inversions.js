@@ -56,7 +56,7 @@ export default function Inversions(props) {
     }}>
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100,color: 'grey'  }}>INVERSIONES</label>
+          <label className="titles" style={{ textAlign: 'center', fontSize: 100,color: 'grey'  }}>INVERSIONES</label>
         </Col>
         <Col span={24}>
           <Link to="/Home">
@@ -78,7 +78,7 @@ export default function Inversions(props) {
 
             return (
              
-              <Card  autoSize true justifyContent={'center'} style={{ width:360, textAlign: 'center'  }} key={index} >
+              <Card   className="invscampos" autoSize true justifyContent={'center'} style={{ width:360, textAlign: 'center'  }} key={index} >
                 
                 {item.titulo}
                 <br />

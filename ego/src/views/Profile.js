@@ -119,10 +119,7 @@ const submitemail = () => {
       <Row>
         <Col span={24}>
           <label style={{ textAlign: 'center', fontSize: 100, color: 'grey' }}>PERFIL</label>
-        
         <br />
-
-        
         <Link to="/Home">
           <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >INICIO</Button>
         </Link>
