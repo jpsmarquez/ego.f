@@ -3,7 +3,7 @@ import {Link,Redirect} from "react-router-dom";
 import * as firebase from 'firebase';
 import {Aplicacion} from '../config/firebaseconfig';
 import { Button , Form, Input, Card} from 'antd';
-import { black } from "ansi-colors";
+
 
 
 export default function Login() {
@@ -52,18 +52,20 @@ export default function Login() {
                   
                 />
               </Form.Item>
-              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
+              <Button type="primary" shape="round"onClick={submit} style={{backgroundColor:'grey'}} >
                 ENTRAR
               </Button>
               <br/>
+              <br/>
               <Link  to="/FPass">
-              <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
+              <Button type="primary" shape="round" style={{backgroundColor:'grey'}}>
                ¿OLVIDASTE LA CONTRASEÑA?
               </Button>
               </Link>
               <br/>
+              <br/>
               <Link  to="/Register">
-              <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}}>
+              <Button type="primary" shape="round" style={{backgroundColor:'grey'}}>
                REGISTRO
               </Button>
               </Link>

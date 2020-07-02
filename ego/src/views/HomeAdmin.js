@@ -17,7 +17,7 @@ export default function HomeAdmin(props) {
                               <br />
                               <br />
                                     <Link to="/Employees">
-                                          <Button className="buttonss" type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' ,fontSize:50}}  >
+                                          <Button className="buttonss" type="primary" shape="round" style={{ width: 500, height:100, backgroundColor: 'gray' ,fontSize:50}}  >
                                                 CREAR EMPLEADO
                                           </Button>
                                     </Link>
@@ -27,7 +27,7 @@ export default function HomeAdmin(props) {
                               <br />
             
                                     <Link to="/NewInversion">
-                                          <Button className="buttonss" type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' ,fontSize:50}}>
+                                          <Button className="buttonss" type="primary" shape="round" style={{ width: 500, height:100,backgroundColor: 'gray' ,fontSize:50}}>
                                                 NUEVA INVERSION
                                             </Button>
                                     </Link>
@@ -38,7 +38,7 @@ export default function HomeAdmin(props) {
                               <br />
        
                                     <Link to="/Inversions">
-                                          <Button className="buttonss" type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey',fontSize:50 }} >
+                                          <Button className="buttonss" type="primary" shape="round" style={{ width: 500, height:100,backgroundColor: 'gray',fontSize:50 }} >
                                                 INVERSIONES
                                             </Button>
                                     </Link>
@@ -47,7 +47,7 @@ export default function HomeAdmin(props) {
                               <br />
                  
                                     <Link to="/Profile">
-                                          <Button className="buttonss" type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey' ,fontSize:50}} >
+                                          <Button className="buttonss" type="primary" shape="round" style={{ width: 500, height:100,backgroundColor: 'gray' ,fontSize:50}} >
                                                 PERFIL
                                           </Button>
 
@@ -56,7 +56,7 @@ export default function HomeAdmin(props) {
                               <br />
                               <br />
  
-                                    <Button className="buttonss" onClick={props.logout} size='100px' type="primary" shape="rectangle" style={{ width: 500, height:100, backgroundColor: 'grey',fontSize:50 }}>
+                                    <Button className="buttonss" onClick={props.logout} size='100px' type="primary" shape="round" style={{ width: 500, height:100,backgroundColor: 'gray',fontSize:50 }}>
                                           SALIR
                                      </Button>
                       

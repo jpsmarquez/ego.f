@@ -76,7 +76,7 @@ export default function Employees(props) {
               </Form.Item>
 
 
-              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}} >
+              <Button type="primary" shape="round" onClick={submit} style={{backgroundColor:'grey'}} >
                 REGISTRAR
               </Button>
               
@@ -86,7 +86,7 @@ export default function Employees(props) {
               
               
               <Link  to="/Home">
-             <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+             <Button type="primary" shape="round" style={{backgroundColor:'grey'}} >
               INICIO
              </Button>
               </Link>

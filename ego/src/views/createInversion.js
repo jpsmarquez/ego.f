@@ -132,13 +132,13 @@ export default function NewInversion(props) {
         }}>
 
           <Link to="/Inversions">
-            <Button type="primary" onClick={submit} style={{ backgroundColor: 'grey' }}>
+            <Button type="primary" shape="round" onClick={submit} style={{ backgroundColor: 'grey' }}>
               GUARDAR
           </Button>
           </Link>
           <br />
           <Link to="/Home">
-            <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+            <Button type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
               INICIO
              </Button>
           </Link>
@@ -159,7 +159,7 @@ export default function NewInversion(props) {
             -
           </Button>
 
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+          <Button type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
               SUBIR IMAGEN
           </Button>
 
@@ -296,7 +296,7 @@ export default function NewInversion(props) {
         </Link>
 
         <Link  to="/Home">
-        <Button type="primary" shape="rectangle" style={{backgroundColor:'grey'}} >
+        <Button type="primary" shape="round" style={{backgroundColor:'grey'}} >
               INICIO
         </Button>
         </Link>

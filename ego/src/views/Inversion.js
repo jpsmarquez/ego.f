@@ -99,7 +99,7 @@ export default withRouter( function Inversion(props) {
         <br />
 
         <Link to="/Home">
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+          <Button type="primary" size={"small"}  shape="round" style={{ backgroundColor: 'grey' }} >
             INICIO
         </Button>
         </Link>
@@ -108,16 +108,12 @@ export default withRouter( function Inversion(props) {
         <br />
 
         <Link to="/Inversions">
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey' }} >
+          <Button type="primary" size={"small"}  shape="round" style={{ backgroundColor: 'grey' }} >
             INVERSIONES
         </Button>
         </Link>
         <br />
         <br />
-
-       
-
-          <br />
           <Input
                   placeholder={`${arrayofdb.titulo} `}
                   style={{ textAlign: 'center' }}
@@ -133,7 +129,7 @@ export default withRouter( function Inversion(props) {
             onCancel={cancelT}
             okText="SI"
             cancelText="NO">
-             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR TITULO</Button>
+             <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR TITULO</Button>
           </Popconfirm>
 
           <br />
@@ -153,27 +149,25 @@ export default withRouter( function Inversion(props) {
             onCancel={cancelD}
             okText="SI"
             cancelText="NO">
-             <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR DESCRIPCION</Button>
+             <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR DESCRIPCION</Button>
           </Popconfirm>
           <br/>
-
           <br/>
           <Input.TextArea
                   style={{textAlign: 'center' }}
                   value={`${arrayofdb.campos}`}
                   onChange={(e) => updateinput(e)}
-                  autoSize true
-                  
+                  autoSize true 
           />
-<br/>
-<br/>
+          <br/>
+          <br/>
           <Popconfirm
             title="¿ESTAS SEGURO?"
             onConfirm={updateC}
             onCancel={cancelc}
             okText="SI"
             cancelText="NO">
-            <Button type="primary" size={"small"}  style={{ backgroundColor: 'grey' }}>EDITAR CAMPO </Button>
+            <Button type="primary" shape="round" size={"small"}  style={{ backgroundColor: 'grey' }}>EDITAR CAMPO </Button>
           </Popconfirm>
 
           <br/>
@@ -184,7 +178,7 @@ export default withRouter( function Inversion(props) {
             onCancel={cancelD}
             okText="SI"
             cancelText="NO">
-            <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR INVERSION</Button>
+            <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR INVERSION</Button>
           </Popconfirm>
           <br/>
           <br/>

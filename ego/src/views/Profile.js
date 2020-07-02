@@ -118,16 +118,16 @@ const submitemail = () => {
     }}>
       <Row>
         <Col span={24}>
-          <label style={{ textAlign: 'center', fontSize: 100, color: 'grey' }}>PERFIL</label>
+          <label style={{ textAlign: 'center', fontSize: 100, color: 'gray' }}>PERFIL</label>
         <br />
         <Link to="/Home">
-          <Button type="primary" shape="rectangle" style={{ backgroundColor: 'grey',textAlign: 'center'  }} >INICIO</Button>
+          <Button type="primary" shape="round" style={{ backgroundColor: 'gray',textAlign: 'center'  }} >INICIO</Button>
         </Link>
        
         <br />
         <br />
       
-        <Card type="flex" style={{ width: 300,textAlign: 'center', alignItems:'center', borderColor:'grey', borderWidth:10}}>
+        <Card type="flex"    style={{ width: 300,textAlign: 'center', alignItems:'center', borderColor:'lightslategray', borderWidth:5, }}>
         <p>INGRESA TU CONTRASEÑA ACTUAL ANTES DE EFECTUAR ALGUN CAMBIO</p>
         <Input
         placeholder={"contraseña actual"}
@@ -158,7 +158,7 @@ const submitemail = () => {
           >
             <br />
             <br />
-           <Button  type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
+           <Button  type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CORREO</Button>
 
           </Popconfirm>
           </Form.Item>
@@ -192,7 +192,7 @@ const submitemail = () => {
             cancelText="NO">
                <br />
             <br />
-            <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
+            <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >CAMBIAR CONTRASEÑA</Button>
           </Popconfirm>
           </Form.Item>
 
@@ -214,7 +214,7 @@ const submitemail = () => {
           >
              <br />
             <br />
-            <Button type="primary" shape="rectangle" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
+            <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >BORRAR CUENTA</Button>
           </Popconfirm>
           <br />
 
