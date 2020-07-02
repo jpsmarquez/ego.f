@@ -32,13 +32,19 @@ export default function ResetPassword() {
                 style={{textAlign:'center'}}
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  size={"default"}
+                  size={"large"}
                   type={'email'}
                 />
               </Form.Item>
               <Link to={'/Home'}>
-              <Button type="primary" onClick={submit} style={{backgroundColor:'grey'}}>
+              <Button shape={"round"} type="primary" onClick={submit} style={{backgroundColor:'grey'}}>
                 ENVIAR
+              </Button>
+              </Link>
+
+              <Link to={'/Home'}>
+              <Button shape={"round"} type="primary"  style={{backgroundColor:'grey'}}>
+                LOG-IN
               </Button>
               </Link>
 

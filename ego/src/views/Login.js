@@ -23,7 +23,7 @@ export default function Login() {
   return (
     <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
            
-            <label className="titles" style={{textAlign:'center', fontSize:150 , color: 'grey' } }>GRUPO E.G.O.</label>
+            <label className="titles" style={{textAlign:'center', fontSize:150 , color: 'grey' } }>GRUPO EGO</label>
             <br/>
             <Form style={{textAlign:'center',flex:'auto'}} >
               <Form.Item

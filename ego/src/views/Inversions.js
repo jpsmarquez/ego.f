@@ -54,9 +54,8 @@ export default function Inversions(props) {
   }, [])
 
   const ssearched = () => {
-
     arrayofdb.map((item, index) => {
-      if (searched === item.titulo && searched !== -1) {
+      if (searched === item.titulo.toLowerCase() && searched !== -1) {
         console.log(item.titulo)
         console.log(item.desc)
         console.log(item.campos)
@@ -71,6 +70,8 @@ export default function Inversions(props) {
           campos: item.campos,
         })
         setArrayofdb(arraydbaux)
+      } else {
+        //.message.error("NO")
       }
     })
     setSearched('')
@@ -85,7 +86,7 @@ export default function Inversions(props) {
 
   return (
     <div style={{
-      display: 'flex',
+    
       textAlign: 'center' ,
       justifyContent: 'center'
     }}>
@@ -114,7 +115,7 @@ export default function Inversions(props) {
             id="Buscar"
             style={{ textAlign: 'center' }}
             placeholder="busca inversión por título"
-            onChange={(e) => setSearched(e.target.value)}
+            onChange={(e) => setSearched(e.target.value.toLowerCase())}
             value={searched}
           />
           <br />
@@ -136,21 +137,22 @@ export default function Inversions(props) {
         {
           arrayofdb.map((item, index) => {
             return (
-
-              <Card type="flex" shape="round" className="invscampos" autoSize true justifyContent={'center'} style={{ width: 360, textAlign: 'center', alignItems: 'center'}} key={index} >
+              <Row   >
+              <Col   >
+              <Card  shape="round" className="invscampos" autoSize true style={{ width: 360, alignItems:'center'}} key={index} >
                 {item.titulo}
                 <br />
                 {item.desc}
                 <br />
-                {item.campos}
-                <br />
                 <Link to={{ pathname: `/Inversion/${item.id}` }}>
-                  <br />
-                  <Button type="primary" size='small' shape="round" style={{ backgroundColor: 'gray', textAlign: 'center' }} >
-                    EDITAR
-                  </Button>
+                <br />
+                <Button type="primary" size='small' shape="round" style={{ backgroundColor: 'gray', textAlign: 'center' }} >
+                    INSPECCIONAR
+                </Button>
                 </Link>
               </Card>
+              </Col>
+              </Row>
             )
           })
         }
