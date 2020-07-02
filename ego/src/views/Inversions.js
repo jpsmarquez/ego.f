@@ -8,7 +8,7 @@ export default function Inversions(props) {
   let ref = firebase.database().ref("/inversion");
   const [variable, setVariable] = useState(false)
   const [arrayofdb, setArrayofdb] = useState([])
-  let [searched,setSearched] = useState('');
+  let [searched, setSearched] = useState('');
   const [st, setSt] = useState('');
 
   console.log(searched)
@@ -53,35 +53,41 @@ export default function Inversions(props) {
     }
   }, [])
 
-  const ssearched = () => { 
-    
-      arrayofdb.map((item, index) => {
-        if (searched === item.titulo && searched !== -1) {
-          console.log(item.titulo)
-          console.log(item.desc)
-          console.log(item.campos)
-          console.log(item)
-  
-          const arraydbaux = arrayofdb;
-          arraydbaux.splice({})
-  
-          arraydbaux.push({
-            titulo: item.titulo,
-            desc: item.desc,
-            campos: item.campos,
-          })
-          setArrayofdb(arraydbaux)
-        }
-      })
-      setSearched('')
+  const ssearched = () => {
+
+    arrayofdb.map((item, index) => {
+      if (searched === item.titulo && searched !== -1) {
+        console.log(item.titulo)
+        console.log(item.desc)
+        console.log(item.campos)
+        console.log(item)
+
+        const arraydbaux = arrayofdb;
+        arraydbaux.splice({})
+
+        arraydbaux.push({
+          titulo: item.titulo,
+          desc: item.desc,
+          campos: item.campos,
+        })
+        setArrayofdb(arraydbaux)
+      }
+    })
+    setSearched('')
   };
+
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   console.log(arrayofdb)
 
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center',
-      textAlign: 'center'
+      textAlign: 'center' ,
+      justifyContent: 'center'
     }}>
       <Row>
         <Col span={24}>
@@ -102,28 +108,36 @@ export default function Inversions(props) {
               NUEVA INVERSION</Button>
           </Link>
         </Col>
-        <br />
         <Col span={24}>
-          <br />
-          <Button onClick={ssearched}  type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
-            BUSCAR
-          </Button>
-          <br />
           <br />
           <Input
             id="Buscar"
             style={{ textAlign: 'center' }}
             placeholder="busca inversión por título"
             onChange={(e) => setSearched(e.target.value)}
-            value={searched}   
+            value={searched}
           />
           <br />
           <br />
+          <Button onClick={ssearched} type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
+            BUSCAR
+          </Button>
+          <br />
+          <br />
+          <Col span={24}>
+            <Button onClick={refreshPage} type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
+              NUEVA BUSQUEDA
+            </Button>
+          </Col>
+          <br />
+
         </Col>
+        
         {
           arrayofdb.map((item, index) => {
             return (
-              <Card shape="round" className="invscampos" autoSize true justifyContent={'center'} style={{ width: 360, textAlign: 'center' }} key={index} >
+
+              <Card type="flex" shape="round" className="invscampos" autoSize true justifyContent={'center'} style={{ width: 360, textAlign: 'center', alignItems: 'center'}} key={index} >
                 {item.titulo}
                 <br />
                 {item.desc}
