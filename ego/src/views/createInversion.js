@@ -61,6 +61,11 @@ export default function NewInversion(props) {
     <Row>
       <Col span={24}>
         <label className="titles" style={{ textAlign: 'center', fontSize: 100, color: 'grey'  }}>NUEVA INVERSION</label>
+      
+      </Col>
+      <Col span={24}>
+
+        <h3 style={{ color: 'grey' }}>El título debe ser unico para cada inversión.</h3>
       </Col>
 
       <Col span={24}>
