@@ -19,8 +19,8 @@ export default function ResetPassword() {
 });
   };
   return (
-    <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
-            <label style={{textAlign:'center', fontSize:60 , color: 'white'} }>RECUPERA TU CONTRASEÑA </label>
+    <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center',}}>
+            <label className="titles" style={{textAlign:'center', fontSize:60 , color: 'white'} }>RECUPERA TU CONTRASEÑA </label>
             <br/>
             <Form style={{textAlign:'center'}} >
               <Form.Item

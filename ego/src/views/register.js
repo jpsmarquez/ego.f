@@ -40,7 +40,7 @@ export default function Login() {
   };
   return (
     <div style={{flexDirection:'column',display:'flex',justifyContent:'center', alignItems:'center', height: '-webkit-fill-available'}}>
-            <label style={{textAlign:'center', fontSize:150 , color: 'white'} }>GRUPO EGO </label>
+            <label className="titles" style={{textAlign:'center', fontSize:150 , color: 'white'} }>REGISTRO </label>
             <br/>
             <Form style={{textAlign:'center',flex:'auto'}} >
               <Form.Item
