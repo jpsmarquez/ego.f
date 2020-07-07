@@ -2,14 +2,14 @@ import * as firebase from 'firebase';
 import "firebase/auth";
 
 const Aplicacion =  {
-    apiKey: "AIzaSyCsrJwOTh9EsWqCiyvXtuUoelsBsohcAIU",
-    authDomain: "egdeomx.firebaseapp.com",
-    databaseURL: "https://egdeomx.firebaseio.com",
-    projectId: "egdeomx",
-    storageBucket: "egdeomx.appspot.com",
-    messagingSenderId: "1012924663671",
-    appId: "1:1012924663671:web:3592cc97e4dd67cdec0372",
-    measurementId: "G-QL4JJ74DJY"
+  apiKey: "AIzaSyBkeISy8mRFTQaO6tMJxFoisgU6ppFAtog",
+  authDomain: "egdeo-app.firebaseapp.com",
+  databaseURL: "https://egdeo-app.firebaseio.com",
+  projectId: "egdeo-app",
+  storageBucket: "egdeo-app.appspot.com",
+  messagingSenderId: "209060058382",
+  appId: "1:209060058382:web:0524132f918e632651735f",
+  measurementId: "G-XRYWKRC3NT"
   };
   // Initialize Firebase
   firebase.initializeApp(Aplicacion);

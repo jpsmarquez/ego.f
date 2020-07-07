@@ -14,7 +14,7 @@ export default withRouter( function Inversion(props) {
   const [campos, setC] = useState('');
   const [ndesc, setnD] = useState('');
   const [ntitulo, setnT] = useState('');
-
+  const [nti, seTi] = useState('');
 
   useEffect(() => {
     ref.once("value", (snapshot) => {
@@ -42,6 +42,16 @@ export default withRouter( function Inversion(props) {
   };
 
   function cancelT(e) {
+    console.log(e);
+    message.error('NO SE EFECTUO CAMBIOS');
+  }
+
+  const updateTi =()=> {
+    firebase.database().ref(`/inversion/${props.match.params.id}/tipo`).set(nti)
+    message.success('TITULO MODIFICADO');
+  };
+
+  function cancelTi(e) {
     console.log(e);
     message.error('NO SE EFECTUO CAMBIOS');
   }
@@ -130,6 +140,27 @@ export default withRouter( function Inversion(props) {
             okText="SI"
             cancelText="NO">
              <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR TITULO</Button>
+          </Popconfirm>
+          
+
+          <br />
+          <br />
+          <Input
+                  placeholder={`${arrayofdb.tipo} `}
+                  style={{ textAlign: 'center' }}
+                  onChange={(e) => seTi(e.target.value)}
+                  value={nti}
+                  size={"default"}
+          />
+          <br />
+          <br />
+          <Popconfirm
+            title="¿ESTAS SEGURO?"
+            onConfirm={updateTi}
+            onCancel={cancelTi}
+            okText="SI"
+            cancelText="NO">
+             <Button type="primary" shape="round" size={"small"} style={{ backgroundColor: 'grey' }} >EDITAR TIPO</Button>
           </Popconfirm>
 
           <br />

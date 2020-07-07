@@ -16,6 +16,7 @@ import ProfileEmp from './views/ProfileEmp';
 import FPass from './views/FPass';
 import NewInversion from './views/createInversion';
 import Register from './views/register';
+import Notas from './views/Notas';
 
 
 
@@ -90,6 +91,12 @@ export default function App() {
             <NewInversion {...props}  logout={logout} />
              
         :<Login {...props}/> )} />
+        
+        <Route exact path="/Notas"render={(props)=>(logged?
+          
+          <Notas {...props}  logout={logout} />
+           
+      :<Login {...props}/> )} />
 
         <Route exact path='/FPass' component={FPass}/>
         <Route exact path='/Register' component={Register}/>

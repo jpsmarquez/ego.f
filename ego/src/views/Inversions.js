@@ -66,12 +66,11 @@ export default function Inversions(props) {
           titulo: item.titulo,
           desc: item.desc,
           campos: item.campos,
+          tipo:item.tipo
         })
         setArrayofdb(arraydbaux)
       } 
     })
-
-
     setSearched('')
   };
 
@@ -113,14 +112,16 @@ export default function Inversions(props) {
             id="Buscar"
             size={"large"}
             style={{ textAlign: 'center', width:300 }}
-            placeholder="BUSCA POR TITULO"
+            placeholder="BUSCAR"
             onChange={(e) => setSearched(e.target.value.toLowerCase())}
             value={searched}
             autoComplete={"off"}
           />
           <h5 style={{ color: 'grey' }}>SI NO EXISTE REGISTRO DE SU BUSQUEDA, </h5>
           <h5 style={{ color: 'grey' }}>ESTA MAL ESCRITA O </h5>
-          <h5 style={{ color: 'grey' }}>HAY INVERSIONES CON EL MISMO TITULO  </h5>
+          <h5 style={{ color: 'grey' }}>HAY INVERSIONES CON EL MISMO TITULO.  </h5>
+          <h5 style={{ color: 'grey' }}>PARA BUSCAR OTRO ATRIBUTO SELECCIONE</h5>
+          <h5 style={{ color: 'grey' }}>CONTROL F o COMMAND F </h5>
       
           <Button onClick={ssearched} type="primary" shape="round" style={{ backgroundColor: 'grey' }} >
             BUSCAR
@@ -141,8 +142,10 @@ export default function Inversions(props) {
             return (
               <Row   >
               <Col   >
-              <Card  shape="round" className="invscampos" autoSize true style={{ width: 360, alignItems:'center', }} key={index} >
+              <Card  shape="round" className="invscampos" autoSize true style={{ alignItems:'center', }} key={index} >
                 {item.titulo}
+                <br />
+                {item.tipo}
                 <br />
                 {item.desc}
                 <br />

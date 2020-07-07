@@ -12,8 +12,6 @@ export default function Employee(props) {
               HOME
         </Button>
         </Link>
-        
-
         </div>   
     );
 };
